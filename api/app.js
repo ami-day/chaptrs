@@ -4,7 +4,7 @@ const path = require("path");
 const logger = require("morgan");
 const JWT = require("jsonwebtoken");
 
-const postsRouter = require("./routes/posts");
+const booksRouter = require("./routes/book");
 const authenticationRouter = require("./routes/authentication");
 const usersRouter = require("./routes/users");
 
@@ -27,6 +27,8 @@ const tokenChecker = (req, res, next) => {
     token = authHeader.slice(7)
   }
 
+  console.log(token);
+  console.log(process.env.JWT_SECRET);
   JWT.verify(token, process.env.JWT_SECRET, (err, payload) => {
     if(err) {
       console.log(err)
@@ -39,9 +41,9 @@ const tokenChecker = (req, res, next) => {
 };
 
 // route setup
-app.use("/posts", tokenChecker, postsRouter);
+app.use("/book", tokenChecker, booksRouter);
 app.use("/tokens", authenticationRouter);
-app.use("/users", usersRouter);
+app.use("/users", tokenChecker, usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
