@@ -11,7 +11,7 @@ if (!process.env.JWT_SECRET) {
  */
 
 var app = require("../app");
-var debug = require("debug")("acebook:server");
+var debug = require("debug")("chaptrs:server");
 var http = require("http");
 var mongoose = require("mongoose");
 
@@ -26,7 +26,7 @@ app.set("port", port);
  * Connect to MongoDB
  **/
 
-var mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/acebook";
+var mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/chaptrs";
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
