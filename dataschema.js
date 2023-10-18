@@ -1,9 +1,9 @@
 Schema: {
     Ami_Bookclub: {
-        Books: {
+        Books: [
             Book: {
                 Genre: 
-                ID:
+                ID: 1
                 Author:
                 Title:
                 Year_Published: 
@@ -12,39 +12,53 @@ Schema: {
                 Personal_Rating:
                 External_Rating:
             }
-        }
-        Members: {
-            Member_ID: {
+            Book: {
+                Genre: 
+                ID: 2
+                Author:
+                Title:
+                Year_Published: 
+                Session_ID:
+                Cover_photo:
+                Personal_Rating:
+                External_Rating:
+            }
+            ]
+        Users: [
+            User: {
+                User_ID: 
                 username:
                 profile_pic:
                 location:
                 date_joined:
             }
-
-        }
-        Sessions: {
-            Session_ID: {
+            User: {
+                User_ID: 
+                username:
+                profile_pic:
+                location:
+                date_joined:
+            }
+        ]
+        Sessions: [
+            Session: {
+                Session_ID: 
+                date: 
+                location: 
+                attending: [user_id, user_id]
+                chosen_book: 1
+                suggested_books: [{user_id: book_id},{user_id: book_id}]
+                },
+            Session: {
+                Session_ID: {
                 date:
                 location:
-                members: []
-                session_book_info: {
-                    title: 'And then there were none',
-                    author: "",
-                    suggested_by: Member_ID
+                users: []
+                read_book: 1
+                suggested_books: [2, 3, 4]
                 }
-
-            }
-            Session_ID: {
-                date:
-                location:
-                members: [],
-                session_book_info: {
-                    title: 'And then there were none',
-                    author: "",
-                    suggested_by: Member_ID
-
-            }
-        }
+                }
+            ]
 
     }
 
@@ -60,8 +74,8 @@ Schema: {
 
             }
         }
-        Members: {
-            Member_ID: {
+        Users: {
+            User_ID: {
                 username:
                 profile_pic:
                 location:
@@ -73,7 +87,7 @@ Schema: {
             Session_ID: {
                 date:
                 location:
-                members: []
+                users: []
                 book_id: XXX
             }
         }
