@@ -14,7 +14,7 @@ const BooksController = {
   },
   Create: (req, res) => {
     const book = new Book(req.body);
-    Book.save((err) => {
+    book.save((err) => {
       if (err) {
         throw err;
       }
