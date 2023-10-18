@@ -19,13 +19,11 @@ const SessionSchema = new mongoose.Schema({
         {
             user_id: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "User",
-                required: true
+                ref: "User", 
             },
             book_id: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Book",
-                required: true
             },
             required: false
         },

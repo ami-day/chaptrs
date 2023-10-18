@@ -13,7 +13,8 @@ const SessionsController = {
         });
     },
     Create: (req, res) => {
-        Session.save((err) => {
+        const session = new Session(req.body);
+        session.save((err) => {
             if (err) {
                 throw err;
             };
