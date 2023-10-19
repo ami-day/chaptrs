@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./sessionform.css";
 
 const SessionForm = ({ token, setSessions }) => {
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState("");   // TODO: Need to connect these to the text areas in JSX below
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
 
