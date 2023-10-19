@@ -45,15 +45,24 @@ const SessionForm = ({ token, setSessions }) => {
         }
     };
 
-// This return session is what gets rendered on the feed
-    return (
-        <form className="session-form-box">
-        <h1 id="test_title">Sessions</h1> 
-        <textarea className="new-session-form">
-            
-        </textarea>
-        </form>
-    )
-
+// This return section is the JSX that gets rendered on the webpage 
+return (
+    <div className="container">
+        <div className="session-box">
+            <div className="session-inner-box">
+                <div className="session-heading">Create A Bookclub Session</div>
+                <form className="session-form">
+                    <textarea className="session-input" placeholder="Date"></textarea>
+                    <textarea className="session-input" placeholder="Location"></textarea>
+                    <textarea className="session-input" placeholder="Users Attending"></textarea>
+                    <textarea className="session-input" placeholder="Chosen Book"></textarea>
+                    <textarea className="session-input" placeholder="Suggested Books"></textarea>
+                    <button className="session-btn">Create Session</button>
+                </form>
+            </div>
+        </div>
+    </div>
+);
 }
+
 export default SessionForm;
