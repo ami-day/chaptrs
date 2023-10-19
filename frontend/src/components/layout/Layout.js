@@ -1,19 +1,15 @@
-import Navbar from "../navbar/Navbar"
-import Header from "../header/Header"
-import UpcomingEvents from "../upcomingevents/UpcomingEvents"
+import Navbar from "../navbar/Navbar";
+import Header from "../header/Header";
+import UpcomingEvents from "../upcomingevents/UpcomingEvents";
+import PastEvents from "../pastevents/PastEvents";
 
 const Layout = () => {
   return (
     <div>
-    <div>
     <Navbar></Navbar>
-    </div>
-    <div>
       <Header></Header>
-    </div>
-    <div>
       <UpcomingEvents></UpcomingEvents>
-    </div>
+      <PastEvents></PastEvents>
     </div>
 
   );

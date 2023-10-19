@@ -13,11 +13,17 @@ const UpcomingEvents = () => {
       <div className="upcoming-event-block">
         <div className="book-wrapper">
           <img className="book" alt="Book" src={book} />
-        </div>
-      </div>
+          <div className="box">
+          </div>
+          <div className="box">
+          </div>
+          </div>
       <div className="upcoming-event-block">
         <div className="book-wrapper">
           <img className="book" alt="Book" src={book} />
+          <div className="box"></div>
+          <div className="box"></div>
+        </div>
         </div>
       </div>
     </div>

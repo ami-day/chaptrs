@@ -71,6 +71,10 @@
     padding: 32px;
     position: relative;
   }
+
+  .book-wrapper {
+    flex-direction: row!important;
+  }
   
   .upcoming-events .book {
     height: 316px;
@@ -78,4 +82,10 @@
     object-fit: cover;
     position: relative;
     width: 212px;
+  }
+
+  .box {
+    height: 293px;
+    width: 275px;
+    border: solid black;
   }
