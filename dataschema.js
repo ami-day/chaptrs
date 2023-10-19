@@ -6,18 +6,18 @@ Schema: {
                 ID: 1
                 Author:
                 Title:
-                Year_Published: 
+                Year_Published:
                 Session_ID:
                 Cover_photo:
                 Personal_Rating:
                 External_Rating:
             }
             Book: {
-                Genre: 
+                Genre:
                 ID: 2
                 Author:
                 Title:
-                Year_Published: 
+                Year_Published:
                 Session_ID:
                 Cover_photo:
                 Personal_Rating:
@@ -26,14 +26,14 @@ Schema: {
             ]
         Users: [
             User: {
-                User_ID: 
+                User_ID:
                 username:
                 profile_pic:
                 location:
                 date_joined:
             }
             User: {
-                User_ID: 
+                User_ID:
                 username:
                 profile_pic:
                 location:
@@ -53,25 +53,22 @@ Schema: {
                 Session_ID: {
                 date:
                 location:
-                users: []
-                read_book: 1
-                suggested_books: [2, 3, 4]
+                attending: [user_id, user_id]
+                chosen_book: 1
+                suggested_books: [{user_id: book_id},{user_id: book_id}]
                 }
                 }
             ]
-
     }
-
     Ellie_Bookclub: {
         Books: {
             Book: {
-                Genre: 
+                Genre:
                 ID:
                 Author:
                 Title:
-                Year_Published: 
+                Year_Published:
                 Session_ID:
-
             }
         }
         Users: {
@@ -81,7 +78,6 @@ Schema: {
                 location:
                 date_joined:
             }
-
         }
         Sessions: {
             Session_ID: {
