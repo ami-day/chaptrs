@@ -1,10 +1,11 @@
-.session-box {
+.session-form-box {
     height: 698px;
     width: 698px;
   }
   
-  .session-box .rectangle {
-    background-color: var(--form-bg);
+.session-form-box {
+    background-color: red;
+    justify-content: center;
     border-radius: 49.09px;
     height: 698px;
     left: 0;
@@ -12,3 +13,7 @@
     top: 0;
     width: 698px;
   }
+
+#test_title {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
