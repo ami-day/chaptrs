@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import Layout from '../layout/Layout'
+import Layout from '../layout/Layout.js'
 import {
   useNavigate,
   Routes,
