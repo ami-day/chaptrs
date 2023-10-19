@@ -1,0 +1,14 @@
+.session-box {
+    height: 698px;
+    width: 698px;
+  }
+  
+  .session-box .rectangle {
+    background-color: var(--form-bg);
+    border-radius: 49.09px;
+    height: 698px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 698px;
+  }
