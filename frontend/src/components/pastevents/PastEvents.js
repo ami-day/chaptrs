@@ -13,18 +13,26 @@ const PastEvents = () => {
       <div className="div">
         <div className="row">
           <div className="card">
-            <img className="placeholder-image" alt="Placeholder image" src={book} />
+          <div>
+                <p>Hello</p>
+            </div>
           </div>
-          <div className="placeholder-image-wrapper">
-            <img className="placeholder-image" alt="Placeholder image" src={book} />
+          <div className="card">
+          <div>
+                <p>Hello</p>
+            </div>
           </div>
         </div>
         <div className="row-2">
           <div className="card">
-            <img className="placeholder-image" alt="Placeholder image" src={book} />
+          <div>
+                <p>Hello</p>
+            </div>
           </div>
-          <div className="placeholder-image-wrapper">
-            <img className="placeholder-image" alt="Placeholder image" src={book} />
+          <div className="card">
+          <div>
+                <p>Hello</p>
+            </div>
           </div>
         </div>
       </div>
