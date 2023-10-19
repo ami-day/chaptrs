@@ -1,6 +1,7 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../layout/Layout'
+import SignUpForm from "../user/SignUpForm";
 import {
   useNavigate,
   Routes,
@@ -11,6 +12,10 @@ const App = () => {
     return (
         <Routes>
           <Route path='/'  element={<Layout navigate={ useNavigate() }/>}/>
+          <Route
+          path="/signup"
+          element={<SignUpForm navigate={useNavigate()} />}
+        />
         </Routes>
     );
 }
