@@ -2,7 +2,7 @@ Schema: {
     Ami_Bookclub: {
         Books: [
             Book: {
-                Genre:
+                Genre: 
                 ID: 1
                 Author:
                 Title:
@@ -42,9 +42,9 @@ Schema: {
         ]
         Sessions: [
             Session: {
-                Session_ID:
-                date:
-                location:
+                Session_ID: 
+                date: 
+                location: 
                 attending: [user_id, user_id]
                 chosen_book: 1
                 suggested_books: [{user_id: book_id},{user_id: book_id}]
@@ -53,9 +53,9 @@ Schema: {
                 Session_ID: {
                 date:
                 location:
-                users: []
-                read_book: 1
-                suggested_books: [2, 3, 4]
+                attending: [user_id, user_id]
+                chosen_book: 1
+                suggested_books: [{user_id: book_id},{user_id: book_id}]
                 }
                 }
             ]

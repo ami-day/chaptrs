@@ -1,7 +1,7 @@
 const Book = require("../models/book");
 const TokenGenerator = require("../lib/token_generator");
 
-const BookController = {
+const BooksController = {
   Index: (req, res) => {
     Book.find((err, books) => {
       if (err) {
@@ -14,15 +14,16 @@ const BookController = {
   },
   Create: (req, res) => {
     const book = new Book(req.body);
-    Book.save((err) => {
+    book.save((err) => {
       if (err) {
         throw err;
       }
 
       const token = TokenGenerator.jsonwebtoken(req.book_id)
+      console.log("Generated Token:", token); // DEBUGGING
       res.status(201).json({ message: 'OK', token: token });
     });
   },
 };
 
-module.exports = BookController;
+module.exports = BooksController;

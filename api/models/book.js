@@ -10,6 +10,7 @@ const BookSchema = new mongoose.Schema({
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Session",
+        required: false,
         },
     ],
     cover_photo: { type: String, required: false },
