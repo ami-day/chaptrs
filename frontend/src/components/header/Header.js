@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import "./header.css";
-const logo = require('../navbar/logo.png');
+const picture = require('./homepage-pic.jpg');
 
 const Header = () => {
   return (
@@ -18,7 +18,7 @@ const Header = () => {
           <Button className="button-instance" divClassName="design-component-instance-node" text="Create an Event" />
         </div>
       </div>
-      <img className="fang-wei-lin" alt="main-picture" src={logo} />
+      <img className="fang-wei-lin" alt="main-picture" src={picture} />
     </div>
   );
 };

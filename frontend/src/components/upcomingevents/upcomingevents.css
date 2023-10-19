@@ -1,0 +1,81 @@
+.upcoming-events {
+    align-items: flex-start;
+    background-color: #feffff;
+    display: flex;
+    flex-direction: column;
+    gap: 51px;
+    height: 1237px;
+    justify-content: center;
+    padding: 101px 85.33px 106px;
+    position: relative;
+    width: 1931px;
+  }
+  
+  .upcoming-events .section-title {
+    align-items: flex-start;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 21.33px;
+    justify-content: center;
+    position: relative;
+    width: 1024px;
+  }
+  
+  .upcoming-events .content {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .upcoming-events .text-wrapper {
+    align-self: stretch;
+    color: var(--heading-color);
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 76.8px;
+    margin-top: -1.33px;
+    position: relative;
+  }
+  
+  .upcoming-events .upcoming-event-block {
+    align-items: flex-start;
+    display: flex;
+    gap: 42.67px;
+    height: 377px;
+    justify-content: center;
+    position: relative;
+    width: 1750px;
+  }
+  
+  .upcoming-events .book-wrapper {
+    align-items: flex-start;
+    background-color: #a2c3a470;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-color: #9289a6;
+    border-radius: 10.67px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 32px;
+    height: 377px;
+    padding: 32px;
+    position: relative;
+  }
+  
+  .upcoming-events .book {
+    height: 316px;
+    margin-bottom: -3px;
+    object-fit: cover;
+    position: relative;
+    width: 212px;
+  }
