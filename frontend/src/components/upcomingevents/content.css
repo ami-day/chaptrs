@@ -1,0 +1,23 @@
+.content {
+    align-items: flex-start;
+    background-color: #a2c3a470;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-color: #9289a6;
+    border-radius: 10.67px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 377px;
+    padding: 32px;
+    position: relative;
+  }
+  
+  .content .book {
+    height: 316px;
+    margin-bottom: -3px;
+    object-fit: cover;
+    position: relative;
+    width: 212px;
+  }
+  

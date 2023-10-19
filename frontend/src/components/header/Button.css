@@ -1,0 +1,29 @@
+.button {
+    all: unset;
+    align-items: center;
+    background-color: var(--primary);
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding: 14px 32px;
+    position: relative;
+    width: 128px;
+  }
+  
+  .button .get-in-touch {
+    color: var(--white);
+    font-family: var(--text-regular-normal-font-family);
+    font-size: var(--text-regular-normal-font-size);
+    font-style: var(--text-regular-normal-font-style);
+    font-weight: var(--text-regular-normal-font-weight);
+    letter-spacing: var(--text-regular-normal-letter-spacing);
+    line-height: var(--text-regular-normal-line-height);
+    margin-left: -13px;
+    margin-right: -13px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }

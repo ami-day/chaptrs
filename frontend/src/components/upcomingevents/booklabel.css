@@ -1,0 +1,16 @@
+.label {
+    height: 223px;
+    width: 451px;
+  }
+  
+  .label .how-innovation-works {
+    color: #000000;
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    line-height: 52.5px;
+    width: 451px;
+  }
+
+  
