@@ -1,0 +1,12 @@
+.box {
+    height: 293px;
+    width: 586px;
+  }
+  
+  .box .book-information {
+    height: 293px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 586px;
+  }
