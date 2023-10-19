@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { link } from "react-router-dom";
+// import { link } from "react-router-dom";
 // TODO: why underlined - what does this do? 
 import eye_opened from '../../images/View.svg';
 import eye_closed from '../../images/View_hide.svg';
@@ -122,6 +122,30 @@ const SignUpForm = ({ navigate }) => {
     return errors;
   }
 
+  const validateLocation = (location) => {
+    const errors = [];
+    if (location.length < 2) {
+      errors.push('Location must have at least 2 characters')
+    }
+    return errors
+  }
+
+  const validateDate_Joined = (date_joined) => {
+    const errors = [];
+    if (date_joined.length < 2) {
+      errors.push('Insert date')
+    }
+    return errors
+  }
+
+  const validateProfile_Picture = (profile_picture) => {
+    const errors = [];
+    if (profile_picture.length < 2) {
+      errors.push('Insert profile picture')
+    }
+    return errors
+  }
+
   const hasErrors = (email, password, errors) => {
     // Check if either email or password is empty
     const isEmpty = email.trim() === '' || password.trim() === '';
@@ -212,7 +236,7 @@ const SignUpForm = ({ navigate }) => {
             <h3 className="title">Hello, Bookworm!</h3>
             <p className="greeting-text">Enter your personal details and start your chapter with us!</p>
             <p>Already have an account? </p>
-            <Link className='button ghost' to={"/login"}>Log In</Link>
+            {/* <Link className='button ghost' to={"/login"}>Log In</Link> */}
           </div>
         </section>
       </>
