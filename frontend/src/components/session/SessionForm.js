@@ -1,16 +1,13 @@
 
 import React, { useState } from "react";
 
-
 const SessionForm = ({ token, setSessions }) => {
     const [date, setDate] = useState("");
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
 }
 
-
-// setSessions still needs defining 
-
+// setSessions still needs defining (Session.js or Feed.js?)
 
 const handleSubmitSession = async (event) => {
     event.preventDefault(); 
@@ -36,11 +33,27 @@ const handleSubmitSession = async (event) => {
             }
         })
         .then((data) =>{
-
-            setSessions(())
-        })
+            // update sessions array with new post
+            /* prevSessions is a parameter for the anonymous function. It represents 
+            the current state of sessions at the time the function is executed. */
+            setSessions((prevSessions) => [data.session, ...prevSessions]);
+            setDate("");
+            setLocation("");
+            setChosenBook("");
+        });
+    } else {
+        console.log("No token");
     }
-}
+};
 
+// This return session is what gets rendered on the feed
+return (
+    <form
+      id="session-form"
+      /* Finish form! With Figma and Ellie? */
+      >
+        
+    </form>
+)
 
-
+export default SessionForm;
