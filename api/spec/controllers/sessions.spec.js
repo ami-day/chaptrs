@@ -36,7 +36,7 @@ describe("/sessions", () => {
     });
 
     // will need to edit this to represent changes to the schema / session model
-    describe.skip("POST session when token is present", () => {
+    describe("POST session when token is present", () => {
         it('response with a 201 status', async () => {
             let response = await request(app)
             .post('/sessions')
