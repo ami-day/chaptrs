@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import "./SessionForm.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const SessionForm = ({ token, setSessions, setModal }) => {
+const SessionForm = ({ setModal }) => {
     const [date, setDate] = useState("");   
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
+    const [token, setToken] = useState(window.localStorage.getItem("token"));
+    const [sessions, setSessions] = useState([]);
+
+    console.log("hello");
 
     const onHandleChangeDate = (event) => {
+        event.preventDefault();
         setDate(event.target.value)
     }
 
     const onHandleChangeLocation = (event) => {
+        event.preventDefault();
         setLocation(event.target.value)
-    }
+        console.log("location:", location)    }
 
     const onHandleChangeChosenBook = (event) => {
+        event.preventDefault();
         setChosenBook(event.target.value)
     }
 
@@ -26,18 +33,22 @@ const SessionForm = ({ token, setSessions, setModal }) => {
 
     const handleSubmitSession = async (event) => {
         event.preventDefault(); 
-        const  formData = new FormData(); 
-        formData.append("date", date);
-        formData.append("location", location);
-        formData.append("chosenBook", chosenBook);
+        console.log("date:", date)
+        console.log("location:", location)
+        console.log("chosenBook:", chosenBook)
 
         if (token) {
             fetch("/sessions", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
             },
-            body: formData,  
+            body: JSON.stringify({
+                date: date,
+                location: location,
+                chosen_book: chosenBook,
+              }),  
             })
             .then((response) => {
                 if (response.status === 201) {
@@ -52,6 +63,8 @@ const SessionForm = ({ token, setSessions, setModal }) => {
                 // update sessions array with new post
                 /* prevSessions is a parameter for the anonymous function. It represents 
                 the current state of sessions at the time the function is executed. */
+                window.localStorage.setItem("token", data.token);
+                setToken(window.localStorage.getItem("token"));
                 setSessions((prevSessions) => [data.session, ...prevSessions]);
                 setDate("");
                 setLocation("");
@@ -70,9 +83,9 @@ return (
             <div className="session-inner-box">
                 <div className="session-heading">Create A Bookclub Session</div>
                 <form className="session-form">
-                    <textarea className="session-input" placeholder="Date" onChange={onHandleChangeDate}></textarea>
-                    <textarea className="session-input" placeholder="Location" onChange={onHandleChangeLocation}></textarea>
-                    <textarea className="session-input" placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
+                    <textarea className="session-input" type="input" value={date} placeholder="Date" onChange={onHandleChangeDate}></textarea>
+                    <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
+                    <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
                     <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
                 </form>
             </div>
