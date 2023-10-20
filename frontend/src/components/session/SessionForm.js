@@ -1,12 +1,23 @@
 import React, { useState } from "react";
-import "./sessionform.css";
+import "./SessionForm.css";
 
 const SessionForm = ({ token, setSessions }) => {
-    const [date, setDate] = useState("");   // TODO: Need to connect these to the text areas in JSX below
+    const [date, setDate] = useState("");   
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
 
-// setSessions still needs defining (Session.js or Feed.js?)
+    const onHandleChangeDate = (event) => {
+        setDate(event.target.value)
+    }
+
+    const onHandleChangeLocation = (event) => {
+        setLocation(event.target.value)
+    }
+
+    const onHandleChangeChosenBook = (event) => {
+        setChosenBook(event.target.value)
+    }
+
 
     const handleSubmitSession = async (event) => {
         event.preventDefault(); 
@@ -32,6 +43,7 @@ const SessionForm = ({ token, setSessions }) => {
                 }
             })
             .then((data) =>{
+                console.log(data);
                 // update sessions array with new post
                 /* prevSessions is a parameter for the anonymous function. It represents 
                 the current state of sessions at the time the function is executed. */
@@ -52,12 +64,10 @@ return (
             <div className="session-inner-box">
                 <div className="session-heading">Create A Bookclub Session</div>
                 <form className="session-form">
-                    <textarea className="session-input" placeholder="Date"></textarea>
-                    <textarea className="session-input" placeholder="Location"></textarea>
-                    <textarea className="session-input" placeholder="Users Attending"></textarea>
-                    <textarea className="session-input" placeholder="Chosen Book"></textarea>
-                    <textarea className="session-input" placeholder="Suggested Books"></textarea>
-                    <button className="session-btn">Create Session</button>
+                    <textarea className="session-input" placeholder="Date" onChange={onHandleChangeDate}></textarea>
+                    <textarea className="session-input" placeholder="Location" onChange={onHandleChangeLocation}></textarea>
+                    <textarea className="session-input" placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
+                    <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
                 </form>
             </div>
         </div>
