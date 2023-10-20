@@ -3,7 +3,14 @@ import Button from "./Button";
 import "./header.css";
 const picture = require('./homepage-pic.jpg');
 
-const Header = () => {
+const Header = ({setModal}) => {
+  
+  const onClickHandler = () => {
+    console.log("Button clicked");
+    //event.preventDefault();
+    setModal(true);
+  }
+
   return (
     <div className="header">
       <div className="header-left">
@@ -15,7 +22,7 @@ const Header = () => {
           </p>
         </div>
         <div className="actions">
-          <Button className="button-instance" divClassName="design-component-instance-node" text="Create an Event" />
+          <Button className="button-instance" divClassName="design-component-instance-node" text="Create an Event" onClick={onClickHandler} />
         </div>
       </div>
       <img className="fang-wei-lin" alt="main-picture" src={picture} />

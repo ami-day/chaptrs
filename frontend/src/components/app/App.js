@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from '../layout/Layout'
 import SignUpForm from "../user/SignUpForm";
 import SessionForm from '../session/SessionForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginForm from '../auth/LoginForm';
 
 import {

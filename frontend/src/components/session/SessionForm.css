@@ -1,9 +1,13 @@
-.container {
+.session-container {
     display: flex;
+    position: absolute;
+    top: 50px;
+    right: 500px;
+    z-index: 2;  /*gives importance to this layer*/ 
     justify-content: center;
     align-items: center;
-    max-width: 800px;
-    max-height: 800px;
+    width: 1000px;
+    height: 1000px;
     padding: 1cm;
     margin: 0 auto; /* Center container horizontally */
 }
@@ -65,4 +69,10 @@
 
 .session-btn:hover {
     background-color: #e16804;
+}
+
+.session-btn-close {
+    position: absolute;
+    top: 325px;
+    right: 65px;
 }

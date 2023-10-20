@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./sessionform.css";
+import "./SessionForm.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const SessionForm = ({ token, setSessions }) => {
+const SessionForm = ({ token, setSessions, setModal }) => {
     const [date, setDate] = useState("");   
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
@@ -18,6 +19,10 @@ const SessionForm = ({ token, setSessions }) => {
         setChosenBook(event.target.value)
     }
 
+    const onClickButtonClose = () => {
+        console.log("Close button clicked");
+        setModal(false);
+    }
 
     const handleSubmitSession = async (event) => {
         event.preventDefault(); 
@@ -59,8 +64,9 @@ const SessionForm = ({ token, setSessions }) => {
 
 // This return section is the JSX that gets rendered on the webpage 
 return (
-    <div className="container">
+    <div className="session-container">
         <div className="session-box">
+        <button type="button" className="btn-close session-btn-close" aria-label="Close" onClick={onClickButtonClose}></button>
             <div className="session-inner-box">
                 <div className="session-heading">Create A Bookclub Session</div>
                 <form className="session-form">
