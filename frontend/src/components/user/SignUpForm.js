@@ -10,6 +10,7 @@ import globe from '../../images/globe.svg';
 import calendar from '../../images/calendar.svg';
 import person from '../../images/person.svg';
 import './signupform.css';
+import Navbar from '../navbar/Navbar';
 // import '../../styles/container/container.css';
 
 
@@ -170,8 +171,8 @@ const SignUpForm = ({ navigate }) => {
     return (
 <>
         <body>
+          <Navbar/>
         <section className="container">
-          <h1 id="test_title">Hello World</h1>
           <div className="container-panel container-panel_left">
             <form className="form" onSubmit={handleSubmit}>
               <h3 className="title">Sign Up</h3>
