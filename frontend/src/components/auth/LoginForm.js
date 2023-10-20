@@ -5,11 +5,10 @@ const LoginForm = ({ navigate }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(email)
-        console.log(password)
         let response = await fetch("/tokens", {
             method: 'post', 
             headers: {
@@ -18,11 +17,9 @@ const LoginForm = ({ navigate }) => {
             body: JSON.stringify({ email: email, password: password})
         })
         if(response.status !== 201) {
-            console.log("oop")
-            alert("Username or password are incorrect")
+            setErrorMessage("Incorrect login details 😢")
             navigate('/login')
         } else {
-            console.log("yay")
             let data = await response.json()
             window.localStorage.setItem("token", data.token)
             navigate('/');
@@ -50,6 +47,7 @@ const LoginForm = ({ navigate }) => {
                 <input type="text" placeholder="Password" value={ password } onChange={handlePasswordChange} >
                 </input>
                 <button type="submit">Login</button>
+                {errorMessage && <div className="login-error-message">{errorMessage}</div>}
             </form>
             <p onClick={() => navigate('/signup')}>Don't yet have an account? <i className="text-primary">Sign up here</i></p>
         </div>
