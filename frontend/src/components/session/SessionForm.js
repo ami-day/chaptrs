@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SessionForm.css";
+import "./sessionform.css";
 
 const SessionForm = ({ token, setSessions }) => {
     const [date, setDate] = useState("");   
