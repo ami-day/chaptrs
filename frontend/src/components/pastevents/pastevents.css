@@ -1,124 +1,93 @@
 .past-events {
-    align-items: flex-start;
-    background-color: #feffff;
-    display: flex;
-    flex-direction: column;
-    gap: 88px;
-    height: 1237px;
-    justify-content: center;
-    padding: 130px 85.33px 149.33px;
-    position: relative;
-    width: 1920px;
-  }
-  
-  .past-events .section-title {
-    align-items: flex-start;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: 21.33px;
-    justify-content: center;
-    margin-top: -54.67px;
-    position: relative;
-    width: 1024px;
-  }
-  
-  .past-events .content {
-    align-items: flex-start;
-    align-self: stretch;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: 32px;
-    position: relative;
-    width: 100%;
-  }
-  
-  .past-events .text-wrapper {
-    align-self: stretch;
-    color: var(--heading-color);
-    font-family: "Roboto-Bold", Helvetica;
-    font-size: 64px;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 76.8px;
-    margin-top: -1.33px;
-    position: relative;
-  }
-  
-  .past-events .div {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 85.33px;
-    height: 400px;
-    position: relative;
-    width: 1746px;
-  }
-  
-  .past-events .row {
-    align-items: flex-start;
-    display: flex;
-    flex: 0 0 auto;
-    gap: 42.67px;
-    margin-left: -1.67px;
-    margin-right: -1.67px;
-    position: relative;
-    width: 1749.33px;
-  }
-  
-  .past-events .card {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    position: relative;
-    width: 827px;
-    background-color: #a2c3a470;
-    border-radius: 10.67px;
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    border-color: #9289a6;
-  }
-  
-  .past-events .placeholder-image {
-    align-self: stretch;
-    height: 400px;
-    object-fit: cover;
-    position: relative;
-    width: 100%;
-  }
-  
-  .past-events .placeholder-image-wrapper {
-    align-items: flex-start;
-    background-color: #a2c3a470;
-    border-radius: 10.67px;
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    border-color: #9289a6;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    flex-grow: 1;
-    position: relative;
-  }
-  
-  .past-events .row-2 {
-    align-items: flex-start;
-    display: flex;
-    flex: 0 0 auto;
-    gap: 42.67px;
-    margin-bottom: -485.33px;
-    margin-left: -1.67px;
-    margin-right: -1.67px;
-    position: relative;
-    width: 1749.33px;
-  }
-  
-  .past-events .content-2 {
-    height: 414px;
-    margin-bottom: -54.67px;
-    position: relative;
-    width: 1746px;
-  }
-  
+  align-items: flex-start;
+  background-color: #feffff;
+  display: flex;
+  flex-direction: column;
+  gap: 51px;
+  height: 1237px;
+  justify-content: center;
+  padding: 101px 85.33px 106px;
+  position: relative;
+  width: 1931px;
+}
+
+.past-events .section-title {
+  align-items: flex-start;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 21.33px;
+  justify-content: center;
+  position: relative;
+  width: 1024px;
+}
+
+.past-events .content {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  width: 100%;
+}
+
+.past-events .text-wrapper {
+  align-self: stretch;
+  color: var(--heading-color);
+  font-family: "Roboto-Bold", Helvetica;
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 76.8px;
+  margin-top: -1.33px;
+  position: relative;
+}
+
+.past-events .upcoming-event-block {
+  align-items: flex-start;
+  display: flex;
+  gap: 42.67px;
+  height: 377px;
+  justify-content: center;
+  position: relative;
+  width: 1750px;
+}
+
+.past-events .book-wrapper {
+  align-items: flex-start;
+  background-color: #a2c3a470;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  border-color: #9289a6;
+  border-radius: 10.67px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 32px;
+  height: 377px;
+  padding: 32px;
+  position: relative;
+}
+
+.book-wrapper {
+  flex-direction: row!important;
+}
+
+.past-events .book {
+  height: 316px;
+  margin-bottom: -3px;
+  object-fit: cover;
+  position: relative;
+  width: 212px;
+}
+
+.box {
+  height: 293px;
+  width: 275px;
+  background-color: #F0FFF1;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 20px;
+}

@@ -133,7 +133,7 @@ const SignUpForm = ({ navigate }) => {
   const validateLocation = (location) => {
     const errors = [];
     if (location.length < 2) {
-      errors.push('Location must have at least 2 characters')
+      errors.push('UPDTE VALIDATION HERE')
     }
     return errors
   }
@@ -141,7 +141,7 @@ const SignUpForm = ({ navigate }) => {
   const validateDate_Joined = (date_joined) => {
     const errors = [];
     if (date_joined.length < 2) {
-      errors.push('Insert date')
+      errors.push('UPDTE VALIDATION HERE')
     }
     return errors
   }
@@ -149,7 +149,7 @@ const SignUpForm = ({ navigate }) => {
   const validateProfile_Picture = (profile_picture) => {
     const errors = [];
     if (profile_picture.length < 2) {
-      errors.push('Insert profile picture')
+      errors.push('UPDTE VALIDATION HERE')
     }
     return errors
   }
