@@ -1,14 +1,68 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    max-height: 800px;
+    padding: 1cm;
+    margin: 0 auto; /* Center container horizontally */
+}
+
 .session-box {
-    height: 698px;
-    width: 698px;
-  }
-  
-  .session-box .rectangle {
-    background-color: var(--form-bg);
-    border-radius: 49.09px;
-    height: 698px;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 698px;
-  }
+    display: flex;                  /* Flexbox */
+    justify-content: center;        /* Horizontally center */
+    align-items: center;            /* Vertically center */
+    background-color: #B8D1BA;
+    width: 120%;
+    border-radius: 10px;
+    padding: 1.5cm;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.session-inner-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.session-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size:larger;
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.session-input {
+    padding: 5px;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    color: grey;
+    font-size: 14px;
+    outline: none;
+    resize: none;
+}
+
+.session-btn {
+    padding: 10px 20px;
+    background-color: #F27807;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin: 0 auto;
+    display: block;
+}
+
+.session-btn:hover {
+    background-color: #e16804;
+}

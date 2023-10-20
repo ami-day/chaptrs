@@ -1,59 +1,68 @@
-
 import React, { useState } from "react";
+import "./sessionform.css";
 
 const SessionForm = ({ token, setSessions }) => {
-    const [date, setDate] = useState("");
+    const [date, setDate] = useState("");   // TODO: Need to connect these to the text areas in JSX below
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
-}
 
 // setSessions still needs defining (Session.js or Feed.js?)
 
-const handleSubmitSession = async (event) => {
-    event.preventDefault(); 
-    const  formData = new FormData(); 
-    formData.append("date", date);
-    formData.append("location", location);
-    formData.append("chosenBook", chosenBook);
+    const handleSubmitSession = async (event) => {
+        event.preventDefault(); 
+        const  formData = new FormData(); 
+        formData.append("date", date);
+        formData.append("location", location);
+        formData.append("chosenBook", chosenBook);
 
-    if (token) {
-        fetch("/sessions", {
-           method: "POST",
-           headers: {
-            Authorization: `Bearer ${token}`,
-           },
-           body: formData,  
-        })
-        .then((response) => {
-            if (response.status === 201) {
-                console.log("Session successfully added"); 
-                return response.json();      
-            } else {
-                console.log("Session not successfully added");
-            }
-        })
-        .then((data) =>{
-            // update sessions array with new post
-            /* prevSessions is a parameter for the anonymous function. It represents 
-            the current state of sessions at the time the function is executed. */
-            setSessions((prevSessions) => [data.session, ...prevSessions]);
-            setDate("");
-            setLocation("");
-            setChosenBook("");
-        });
-    } else {
-        console.log("No token");
-    }
-};
+        if (token) {
+            fetch("/sessions", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            body: formData,  
+            })
+            .then((response) => {
+                if (response.status === 201) {
+                    console.log("Session successfully added"); 
+                    return response.json();      
+                } else {
+                    console.log("Session not successfully added");
+                }
+            })
+            .then((data) =>{
+                // update sessions array with new post
+                /* prevSessions is a parameter for the anonymous function. It represents 
+                the current state of sessions at the time the function is executed. */
+                setSessions((prevSessions) => [data.session, ...prevSessions]);
+                setDate("");
+                setLocation("");
+                setChosenBook("");
+            });
+        } else {
+            console.log("No token");
+        }
+    };
 
-// This return session is what gets rendered on the feed
+// This return section is the JSX that gets rendered on the webpage 
 return (
-    <form
-      id="session-form"
-      /* Finish form! With Figma and Ellie? */
-      >
-        
-    </form>
-)
+    <div className="container">
+        <div className="session-box">
+            <div className="session-inner-box">
+                <div className="session-heading">Create A Bookclub Session</div>
+                <form className="session-form">
+                    <textarea className="session-input" placeholder="Date"></textarea>
+                    <textarea className="session-input" placeholder="Location"></textarea>
+                    <textarea className="session-input" placeholder="Users Attending"></textarea>
+                    <textarea className="session-input" placeholder="Chosen Book"></textarea>
+                    <textarea className="session-input" placeholder="Suggested Books"></textarea>
+                    <button className="session-btn">Create Session</button>
+                </form>
+            </div>
+        </div>
+    </div>
+);
+}
 
 export default SessionForm;
