@@ -1,7 +1,7 @@
 const TokenGenerator = require("../../lib/token_generator");
 const JWT = require("jsonwebtoken")
 
-describe.skip("TokenGenerator", () => {
+describe("TokenGenerator", () => {
   describe("jsonwebtoken", () => {
     test("returns a token containing user_id that is valid for 20 minutes", () => {
       const user_id = 1;

@@ -3,7 +3,7 @@ const request = require("supertest");
 require("../mongodb_helper");
 const User = require('../../models/user');
 
-describe.skip("/tokens", () => {
+describe("/tokens", () => {
   beforeAll(async () => {
     const user = new User({ username: 'some_user', email: "test@test.com", password: "12345678" })
     console.log(`user before save: ${user}`)
