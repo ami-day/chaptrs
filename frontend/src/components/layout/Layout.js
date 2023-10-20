@@ -8,13 +8,13 @@ import "./layout.css";
 
 const Layout = () => {
 
-  const [modal, setModal] = useState(true) 
+  const [modal, setModal] = useState(false) 
   return (
     <div>
     <Navbar></Navbar>
-      {modal && (<SessionForm>  </SessionForm>)}
-      <div className={`${modal ? "blur" : "modal"}`}>
-      <Header></Header>
+      {modal && (<SessionForm setModal={setModal}> </SessionForm>)}
+      <div className={`${modal ? "blur" : ""}`}>
+      <Header setModal={setModal}></Header>
       <UpcomingEvents></UpcomingEvents>
       <PastEvents></PastEvents>
       </div>
