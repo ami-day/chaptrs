@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 // TODO: why underlined - what does this do? 
 import eye_opened from '../../images/View.svg';
 import eye_closed from '../../images/View_hide.svg';
-// TODO: add images for location, date_joined, profile_pic on signup form
 import userPic from '../../images/User.svg';
 import lock from '../../images/lock-03.svg';
 import email_icon from '../../images/email.svg';
@@ -130,6 +129,7 @@ const SignUpForm = ({ navigate }) => {
     return errors;
   }
 
+  // After MVP make this more robust by importing location data from API
   const validateLocation = (location) => {
     const errors = [];
     if (location.length < 2) {
@@ -137,7 +137,7 @@ const SignUpForm = ({ navigate }) => {
     }
     return errors
   }
-
+  // After MVP make this more robust by changing string type to Date Object in back-end - drop down form to select date? Or auto fill with today's date?
   const validateDate_Joined = (date_joined) => {
     const errors = [];
     if (date_joined.length < 2) {
@@ -145,7 +145,7 @@ const SignUpForm = ({ navigate }) => {
     }
     return errors
   }
-
+  // After MVP make this more robust by filling with default user image?
   const validateProfile_Picture = (profile_picture) => {
     const errors = [];
     if (profile_picture.length < 2) {
