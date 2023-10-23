@@ -5,12 +5,12 @@
     flex-direction: column;
     height: 120px;
     justify-content: center;
-    padding: 0px 55px 0px 54px;
+    /* padding: 0px 55px 0px 54px; */
     position: relative;
     width: 1920px;
   }
   
-  .navbar .container {
+  .navbar .navbar-container {
     align-items: center;
     align-self: stretch;
     display: flex;
@@ -18,7 +18,9 @@
     gap: 42.67px;
     justify-content: center;
     position: relative;
+    margin-top: 30px;
     width: 100%;
+    
   }
   
   .navbar .logo {

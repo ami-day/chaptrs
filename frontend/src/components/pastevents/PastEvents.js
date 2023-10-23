@@ -25,6 +25,7 @@ const PastEvents = () => {
           </div>
           </div>
           </div>
+
           <div className="past-event-block">
         <div className="book-wrapper">
           <img className="book" alt="Book" src={book} />
@@ -49,6 +50,7 @@ const PastEvents = () => {
           </div>
           </div>
           </div>
+            <div className="indv-row">
           <div className="past-event-block">
         <div className="book-wrapper">
           <img className="book" alt="Book" src={book} />
@@ -59,6 +61,7 @@ const PastEvents = () => {
           <SessionLabel></SessionLabel>
           </div>
           </div>
+           </div>
           </div>
         </div>
       </div>

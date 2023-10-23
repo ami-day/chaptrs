@@ -36,7 +36,7 @@ const SessionForm = ({ setModal }) => {
         setAuthors(response.items[0].volumeInfo.authors);
         setTitle(response.items[0].volumeInfo.title);
         setYearPublished(response.items[0].volumeInfo.publishedDate);
-        setCoverPhoto(response.items[0].volumeInfo.imageLinks.smallThumbnail);
+        setCoverPhoto(response.items[0].volumeInfo.imageLinks.thumbnail);
     } 
 
 
@@ -50,8 +50,12 @@ const SessionForm = ({ setModal }) => {
         console.log("date:", date)
         console.log("location:", location)
         console.log("chosenBook:", chosenBook)
-
-        fetchBookDetails();
+        
+        await fetchBookDetails();
+        console.log(title);
+        console.log(authors);
+        console.log(yearPublished);
+        console.log(coverPhoto);
 
         if (token) {
             fetch("/books", {
@@ -79,15 +83,16 @@ const SessionForm = ({ setModal }) => {
             .then((data) =>{
                 console.log(data);
                 setBookObject(data.book);
+                console.log(bookObject);
                 // update sessions array with new post
                 /* prevSessions is a parameter for the anonymous function. It represents 
                 the current state of sessions at the time the function is executed. */
                 window.localStorage.setItem("token", data.token);
                 setToken(window.localStorage.getItem("token"));
-                setAuthors([]);
-                setTitle("");
-                setYearPublished("");
-                setCoverPhoto("");
+                // setAuthors([]);
+                // setTitle("");
+                // setYearPublished("");
+                // setCoverPhoto("");
 
                 fetch("/sessions", {
                     method: "POST",
@@ -99,6 +104,7 @@ const SessionForm = ({ setModal }) => {
                         date: date,
                         location: location,
                         chosen_book: bookObject._id
+                    
         
                       }),  
                     })
