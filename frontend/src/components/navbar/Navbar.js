@@ -5,7 +5,7 @@ const logo = require('./logo.png');
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="container">
+      <div className="navbar-container">
         <img className="logo" alt="Logo" src={logo} />
         <div className="column" />
         <div className="div">

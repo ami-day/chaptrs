@@ -3,11 +3,7 @@ import "./upcomingevents.css";
 import BookLabel from "./BookLabel";
 import SessionLabel from "./SessionLabel";
 import "../session/SessionForm";
-// TODO: Check importing sessions from SessionForm 
-const book = require('./book.jpg');
-// const sessions = require('../SessionForm.js')
 
-// update return for dynamic entry of data from fetch request
 // TODO update other files (e.g. box.js/bookLabel.js/SessionLabel.js) - call hooks
 
 const UpcomingEvents = () => {
@@ -67,7 +63,7 @@ const UpcomingEvents = () => {
       </div>
       <div className="upcoming-event-block">
         <div className="book-wrapper">
-          <img className="book" alt="Book" src={book} />
+          <img className="book" alt="Book" src="https://covers.openlibrary.org/b/isbn/9780008334840-M.jpg" />
           <div className="box">
             <BookLabel sessions={sessions}></BookLabel>
           </div>
@@ -77,7 +73,7 @@ const UpcomingEvents = () => {
           </div>
       <div className="upcoming-event-block">
         <div className="book-wrapper">
-          <img className="book" alt="Book" src={book} />
+          <img className="book" alt="Book" src="https://covers.openlibrary.org/b/isbn/9780008334840-M.jpg" />
           <div className="box">
           <BookLabel></BookLabel>
           </div>

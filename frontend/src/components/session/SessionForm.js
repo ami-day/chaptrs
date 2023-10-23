@@ -7,9 +7,12 @@ const SessionForm = ({ setModal }) => {
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
     const [token, setToken] = useState(window.localStorage.getItem("token"));
-    const [sessions, setSessions] = useState([]);
+    const [authors, setAuthors] = useState([]);
+    const [title, setTitle] = useState("");
+    const [yearPublished, setYearPublished] = useState("");
+    const [coverPhoto, setCoverPhoto] = useState("");
+    const [bookObject, setBookObject] = useState(""); 
 
-    console.log("hello");
 
     const onHandleChangeDate = (event) => {
         event.preventDefault();
@@ -26,6 +29,16 @@ const SessionForm = ({ setModal }) => {
         setChosenBook(event.target.value)
     }
 
+    async function fetchBookDetails() {
+        const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${chosenBook}`
+        let response = await fetch(url);
+        response = await response.json()
+        setAuthors(response.items[0].volumeInfo.authors);
+        setTitle(response.items[0].volumeInfo.title);
+        setYearPublished(response.items[0].volumeInfo.publishedDate);
+        setCoverPhoto(`https://covers.openlibrary.org/b/isbn/${chosenBook}-M.jpg`)
+    } 
+
     const onClickButtonClose = () => {
         console.log("Close button clicked");
         setModal(false);
@@ -36,43 +49,83 @@ const SessionForm = ({ setModal }) => {
         console.log("date:", date)
         console.log("location:", location)
         console.log("chosenBook:", chosenBook)
+        
+        await fetchBookDetails();
+        console.log(title);
+        console.log(authors);
+        console.log(yearPublished);
+        console.log(coverPhoto);
 
         if (token) {
-            fetch("/sessions", {
+            fetch("/books", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                date: date,
-                location: location,
-                chosen_book: chosenBook,
+                authors: authors,
+                title: title,
+                year_published: yearPublished,
+                cover_photo: coverPhoto
+
               }),  
             })
             .then((response) => {
                 if (response.status === 201) {
-                    console.log("Session successfully added"); 
+                    console.log("Book successfully added"); 
                     return response.json();      
                 } else {
-                    console.log("Session not successfully added");
+                    console.log("Book not successfully added");
                 }
             })
             .then((data) =>{
                 console.log(data);
+                setBookObject(data.book);
+                console.log(bookObject);
                 // update sessions array with new post
                 /* prevSessions is a parameter for the anonymous function. It represents 
                 the current state of sessions at the time the function is executed. */
                 window.localStorage.setItem("token", data.token);
                 setToken(window.localStorage.getItem("token"));
-                setSessions((prevSessions) => [data.session, ...prevSessions]);
-                setDate("");
-                setLocation("");
-                setChosenBook("");
+                // setAuthors([]);
+                // setTitle("");
+                // setYearPublished("");
+                // setCoverPhoto("");
+
+                fetch("/sessions", {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        date: date,
+                        location: location,
+                        chosen_book: bookObject._id
+                    
+        
+                      }),  
+                    })
+                    .then((response) => {
+                        if (response.status === 201) {
+                            console.log("Session successfully added"); 
+                            return response.json();      
+                        } else {
+                            console.log("Session not successfully added");
+                        }
+                    })
+                    .then((data) =>{
+                        console.log(data);
+                    });
+
+                
             });
         } else {
             console.log("No token");
         }
+
+
     };
 
 // This return section is the JSX that gets rendered on the webpage 
