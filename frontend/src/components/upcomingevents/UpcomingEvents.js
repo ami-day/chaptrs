@@ -4,6 +4,19 @@ import BookLabel from "./BookLabel";
 import SessionLabel from "./SessionLabel";
 const book = require('./book.jpg');
 
+//imports
+
+// create useState hooks
+
+
+// create fetch requests - user (current user) & sessions
+
+
+// update return for dynamic entry of data from fetch request
+
+
+// TODO update other files (e.g. box.js/bookLabel.js/SessionLabel.js) - call hooks
+
 const UpcomingEvents = () => {
   return (
     <div className="upcoming-events">
