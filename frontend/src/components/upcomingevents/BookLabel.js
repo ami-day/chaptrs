@@ -1,16 +1,21 @@
 import React from "react";
 import "./booklabel.css";
+// import "../upcomingevents.js";
 
-const BookLabel = () => {
+const BookLabel = ({ sessions }) => {
   return (
     <div className="label">
-      <p className="how-innovation-works">
-          How Innovation Works
-          <br />
-          Matt Ridley
-          <br />
-          Published 2023
-      </p>
+      <div className="upcoming-bookclub-book-information">
+        {sessions ? (
+          sessions.map((session) => (
+            <div key={session._id}>
+              <h3>Title: {session.book}</h3>
+            </div>
+          ))
+        ) : (
+          <h3>No sessions available</h3>
+        )}
+      </div>
     </div>
   );
 };
