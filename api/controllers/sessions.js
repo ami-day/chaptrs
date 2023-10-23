@@ -8,7 +8,7 @@ const SessionsController = {
             if (err) {
                 throw err;
             }
-            const token = TokenGenerator.jsonwebtoken(req, session_id)
+            const token = TokenGenerator.jsonwebtoken(req.session_id)
             res.status(200).json({ sessions: sessions, token: token});
         });
     },
