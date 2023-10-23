@@ -30,7 +30,7 @@ const SessionForm = ({ setModal }) => {
     }
 
     async function fetchBookDetails() {
-        const url = "https://www.googleapis.com/books/v1/volumes?q=isbn:9780008334840"
+        const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${chosenBook}`
         let response = await fetch(url);
         response = await response.json()
         setAuthors(response.items[0].volumeInfo.authors);
