@@ -8,6 +8,11 @@ const SessionForm = ({ setModal }) => {
     const [chosenBook, setChosenBook] = useState("")
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const [sessions, setSessions] = useState([]);
+    const [authors, setAuthors] = useState([]);
+    const [title, setTitle] = useState("");
+    const [yearPublished, setYearPublished] = useState("");
+    const [coverPhoto, setCoverPhoto] = useState("");
+
 
     console.log("hello");
 
@@ -26,6 +31,17 @@ const SessionForm = ({ setModal }) => {
         setChosenBook(event.target.value)
     }
 
+    async function fetchBookDetails() {
+        const url = "https://www.googleapis.com/books/v1/volumes?q=isbn:9780008334840"
+        let response = await fetch(url);
+        response = await response.json()
+        setAuthors(response.items[0].volumeInfo.authors);
+        setTitle(response.items[0].volumeInfo.title);
+        setYearPublished(response.items[0].volumeInfo.publishedDate);
+        setCoverPhoto(response.items[0].volumeInfo.imageLinks.smallThumbnail);
+    } 
+
+
     const onClickButtonClose = () => {
         console.log("Close button clicked");
         setModal(false);
@@ -37,25 +53,31 @@ const SessionForm = ({ setModal }) => {
         console.log("location:", location)
         console.log("chosenBook:", chosenBook)
 
+        fetchBookDetails();
+        console.log(title);
+        console.log("year pub", yearPublished);
+
         if (token) {
-            fetch("/sessions", {
+            fetch("/books", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                date: date,
-                location: location,
-                chosen_book: chosenBook,
+                authors: authors,
+                title: title,
+                year_published: yearPublished,
+                cover_photo: coverPhoto
+
               }),  
             })
             .then((response) => {
                 if (response.status === 201) {
-                    console.log("Session successfully added"); 
+                    console.log("Book successfully added"); 
                     return response.json();      
                 } else {
-                    console.log("Session not successfully added");
+                    console.log("Book not successfully added");
                 }
             })
             .then((data) =>{
@@ -65,14 +87,16 @@ const SessionForm = ({ setModal }) => {
                 the current state of sessions at the time the function is executed. */
                 window.localStorage.setItem("token", data.token);
                 setToken(window.localStorage.getItem("token"));
-                setSessions((prevSessions) => [data.session, ...prevSessions]);
-                setDate("");
-                setLocation("");
-                setChosenBook("");
+                setAuthors([]);
+                setTitle("");
+                setYearPublished("");
+                setCoverPhoto("");
             });
         } else {
             console.log("No token");
         }
+
+
     };
 
 // This return section is the JSX that gets rendered on the webpage 
