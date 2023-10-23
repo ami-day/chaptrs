@@ -14,14 +14,14 @@ const BooksController = {
   },
   Create: (req, res) => {
     const book = new Book(req.body);
-    book.save((err) => {
+    book.save((err, savedBook) => {
       if (err) {
         throw err;
       }
 
       const token = TokenGenerator.jsonwebtoken(req.book_id)
       console.log("Generated Token:", token); // DEBUGGING
-      res.status(201).json({ message: 'OK', token: token });
+      res.status(201).json({ message: 'OK', token: token, book: savedBook });
     });
   },
 };

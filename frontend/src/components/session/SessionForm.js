@@ -7,14 +7,12 @@ const SessionForm = ({ setModal }) => {
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
     const [token, setToken] = useState(window.localStorage.getItem("token"));
-    const [sessions, setSessions] = useState([]);
     const [authors, setAuthors] = useState([]);
     const [title, setTitle] = useState("");
     const [yearPublished, setYearPublished] = useState("");
     const [coverPhoto, setCoverPhoto] = useState("");
+    const [bookObject, setBookObject] = useState(""); 
 
-
-    console.log("hello");
 
     const onHandleChangeDate = (event) => {
         event.preventDefault();
@@ -54,8 +52,6 @@ const SessionForm = ({ setModal }) => {
         console.log("chosenBook:", chosenBook)
 
         fetchBookDetails();
-        console.log(title);
-        console.log("year pub", yearPublished);
 
         if (token) {
             fetch("/books", {
@@ -82,6 +78,7 @@ const SessionForm = ({ setModal }) => {
             })
             .then((data) =>{
                 console.log(data);
+                setBookObject(data.book);
                 // update sessions array with new post
                 /* prevSessions is a parameter for the anonymous function. It represents 
                 the current state of sessions at the time the function is executed. */
@@ -91,6 +88,33 @@ const SessionForm = ({ setModal }) => {
                 setTitle("");
                 setYearPublished("");
                 setCoverPhoto("");
+
+                fetch("/sessions", {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        date: date,
+                        location: location,
+                        chosen_book: bookObject._id
+        
+                      }),  
+                    })
+                    .then((response) => {
+                        if (response.status === 201) {
+                            console.log("Session successfully added"); 
+                            return response.json();      
+                        } else {
+                            console.log("Session not successfully added");
+                        }
+                    })
+                    .then((data) =>{
+                        console.log(data);
+                    });
+
+                
             });
         } else {
             console.log("No token");
