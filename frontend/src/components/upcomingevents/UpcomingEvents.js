@@ -2,7 +2,6 @@ import React from "react";
 import "./upcomingevents.css";
 import BookLabel from "./BookLabel";
 import SessionLabel from "./SessionLabel";
-const book = require('./book.jpg');
 
 const UpcomingEvents = () => {
   return (
@@ -14,7 +13,7 @@ const UpcomingEvents = () => {
       </div>
       <div className="upcoming-event-block">
         <div className="book-wrapper">
-          <img className="book" alt="Book" src={book} />
+          <img className="book" alt="Book" src="https://covers.openlibrary.org/b/isbn/9780008334840-M.jpg" />
           <div className="box">
             <BookLabel></BookLabel>
           </div>
@@ -24,7 +23,7 @@ const UpcomingEvents = () => {
           </div>
       <div className="upcoming-event-block">
         <div className="book-wrapper">
-          <img className="book" alt="Book" src={book} />
+          <img className="book" alt="Book" src="https://covers.openlibrary.org/b/isbn/9780008334840-M.jpg" />
           <div className="box">
           <BookLabel></BookLabel>
           </div>

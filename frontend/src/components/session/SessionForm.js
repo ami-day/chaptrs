@@ -36,9 +36,8 @@ const SessionForm = ({ setModal }) => {
         setAuthors(response.items[0].volumeInfo.authors);
         setTitle(response.items[0].volumeInfo.title);
         setYearPublished(response.items[0].volumeInfo.publishedDate);
-        setCoverPhoto(response.items[0].volumeInfo.imageLinks.thumbnail);
+        setCoverPhoto(`https://covers.openlibrary.org/b/isbn/${chosenBook}-M.jpg`)
     } 
-
 
     const onClickButtonClose = () => {
         console.log("Close button clicked");
