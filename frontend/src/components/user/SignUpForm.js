@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { link } from "react-router-dom";
+import { link } from "react-router-dom";
 // TODO: why underlined - what does this do? 
 import eye_opened from '../../images/View.svg';
 import eye_closed from '../../images/View_hide.svg';
@@ -247,8 +247,7 @@ const SignUpForm = ({ navigate }) => {
           <div className="container-panel container-panel_right">
             <h3 className="title">Hello, Bookworm!</h3>
             <p className="greeting-text">Enter your personal details and start your chapter with us!</p>
-            <p>Already have an account? </p>
-            {/* <Link className='button ghost' to={"/login"}>Log In</Link> */}
+            <p onClick={() => navigate('/login')}>Already have an account? <i className="text-primary">Log in here</i></p>
           </div>
         </section>
         </body>
