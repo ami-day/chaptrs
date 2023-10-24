@@ -28,13 +28,31 @@ const BookLabel = ({ sessions }) => {
     return foundBook ? foundBook.title : undefined;
   }
 
+  function bookIdToAuthors(book_id) {
+    const foundBook = books.find((book) => book._id === book_id);
+    return foundBook ? foundBook.authors[0] : undefined;
+  }
+
+  function bookIdToYearPublished(book_id) {
+    const foundBook = books.find((book) => book._id === book_id);
+    return foundBook ? foundBook.year_published : undefined;
+  }
+
   return (
     <div className="label">
       <div className="upcoming-bookclub-book-information">
         {sessions ? (
           sessions.map((session) => (
             <div key={session.chosen_book}>
-              <h3>Title: {bookIdToTitle(session.chosen_book)}</h3>
+              <div>
+                <h3>Title: {bookIdToTitle(session.chosen_book)}</h3>
+              </div>
+              <div>
+                <h3>Author: {bookIdToAuthors(session.chosen_book)}</h3>
+              </div>
+              <div>
+                <h3>Year Published: {bookIdToYearPublished(session.chosen_book)}</h3>
+              </div>
             </div>
           ))
         ) : (
