@@ -11,7 +11,6 @@ const UpcomingEvents = () => {
   const [user, setUser] = useState("");
   const [sessions, setSessions] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
-  
 
   // useEffect(() => {
   //   console.log("Checking users")
@@ -68,7 +67,7 @@ const UpcomingEvents = () => {
       </div>
       <div className="upcoming-event-block">
         <div className="book-wrapper">
-          <CoverLabel sessions={sessions}></CoverLabel>
+          <CoverLabel session={sessions[0]}></CoverLabel>
           {/* <img
             className="book"
             alt="Book"
@@ -79,21 +78,6 @@ const UpcomingEvents = () => {
           </div>
           <div className="box">
             <SessionLabel sessions={sessions}></SessionLabel>
-          </div>
-        </div>
-        <div className="upcoming-event-block">
-          <div className="book-wrapper">
-            <img
-              className="book"
-              alt="Book"
-              src="https://covers.openlibrary.org/b/isbn/9780008334840-M.jpg"
-            />
-            <div className="box">
-              <BookLabel sessions={sessions}></BookLabel>
-            </div>
-            <div className="box">
-              <SessionLabel sessions={sessions}></SessionLabel>
-            </div>
           </div>
         </div>
       </div>
