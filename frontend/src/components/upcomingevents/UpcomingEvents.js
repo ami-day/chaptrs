@@ -85,7 +85,7 @@ const UpcomingEvents = () => {
               <BookLabel session={upcomingSessions[0]}></BookLabel>
             </div>
             <div className="box">
-              <SessionLabel sessions={upcomingSessions}></SessionLabel>
+              <SessionLabel session={upcomingSessions[0]}></SessionLabel>
             </div>
           </div>
         ) : (
