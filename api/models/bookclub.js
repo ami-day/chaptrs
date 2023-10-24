@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const BookClubSchema = new mongoose.Schema({
+    // name: "string",
     books: [
         {type: mongoose.Schema.Types.ObjectId,
         ref: "Book"}
