@@ -4,12 +4,13 @@ import BookLabel from "./BookLabel";
 import SessionLabel from "./SessionLabel";
 import CoverLabel from "./CoverLabel";
 import "../session/SessionForm";
+import sortBy from "lodash/sortBy";
 
 // TODO update other files (e.g. box.js/bookLabel.js/SessionLabel.js) - call hooks
 
 const UpcomingEvents = () => {
   const [user, setUser] = useState("");
-  const [sessions, setSessions] = useState([]);
+  const [upcomingSessions, setUpcomingSessions] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
 
   // useEffect(() => {
@@ -33,6 +34,17 @@ const UpcomingEvents = () => {
   // TODO: In order to dislpay one bookclub per component we can use the bookID which is used in both the book and the session objects.
   // We could replicate the .find method as we did for title etc below and pass through both book and session.
 
+  function getUpcomingSessions(sessions) {
+    let upcoming = [];
+    let today = new Date();
+    sessions.forEach((session) => {
+      if (new Date(session.date) >= today) {
+        upcoming.push(session);
+      }
+    });
+    return sortBy(upcoming, "date");
+  }
+
   useEffect(() => {
     console.log("Checking sessions");
     if (token) {
@@ -46,8 +58,8 @@ const UpcomingEvents = () => {
         .then(async (data) => {
           console.log("session data", data.sessions);
           window.localStorage.getItem("token", data.token);
-          // sortByDate(data.sessions)
-          setSessions(data.sessions);
+          let upcomingSessions = getUpcomingSessions(data.sessions);
+          setUpcomingSessions(upcomingSessions);
         });
     }
   }, []);
@@ -66,20 +78,19 @@ const UpcomingEvents = () => {
         </div>
       </div>
       <div className="upcoming-event-block">
-        <div className="book-wrapper">
-          <CoverLabel session={sessions[0]}></CoverLabel>
-          {/* <img
-            className="book"
-            alt="Book"
-            src="https://covers.openlibrary.org/b/isbn/9780008334840-M.jpg"
-          /> */}
-          <div className="box">
-            <BookLabel sessions={sessions}></BookLabel>
+        {upcomingSessions ? (
+          <div className="book-wrapper">
+            <CoverLabel session={upcomingSessions[0]}></CoverLabel>
+            <div className="box">
+              <BookLabel session={upcomingSessions[0]}></BookLabel>
+            </div>
+            <div className="box">
+              <SessionLabel sessions={upcomingSessions}></SessionLabel>
+            </div>
           </div>
-          <div className="box">
-            <SessionLabel sessions={sessions}></SessionLabel>
-          </div>
-        </div>
+        ) : (
+          <div className="book-wrapper"></div>
+        )}
       </div>
     </div>
   );

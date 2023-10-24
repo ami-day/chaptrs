@@ -15,7 +15,7 @@ const SessionLabel = ({ sessions }) => {
           ))
         ) : (
           <h3>No sessions available</h3>
-        )} 
+        )}
       </div>
     </div>
   );
