@@ -11,7 +11,7 @@ const Layout = () => {
   const [modal, setModal] = useState(false) 
   return (
     <div>
-    <Navbar></Navbar>
+    <Navbar currentPage="homepage"></Navbar>
       {modal && (<SessionForm setModal={setModal}> </SessionForm>)}
       <div className={`${modal ? "blur" : ""}`}>
       <Header setModal={setModal}></Header>

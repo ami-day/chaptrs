@@ -41,7 +41,7 @@ const LoginForm = ({ navigate }) => {
 
     return (
         <>
-        <Navbar/>
+        <Navbar currentPage = "login"/>
         <h1>Login</h1>
         <div id="login_form_container">
             <form className="login_form" onSubmit={handleSubmit} >

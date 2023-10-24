@@ -171,7 +171,7 @@ const SignUpForm = ({ navigate }) => {
     return (
 <>
         <body>
-          <Navbar/>
+          <Navbar currentPage ="signup"/>
         <section className="container">
           <div className="container-panel container-panel_left">
             <form className="form" onSubmit={handleSubmit}>
