@@ -33,10 +33,17 @@ const SessionForm = ({ setModal }) => {
         const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${chosenBook}`
         let response = await fetch(url);
         response = await response.json()
-        setAuthors(response.items[0].volumeInfo.authors);
-        setTitle(response.items[0].volumeInfo.title);
-        setYearPublished(response.items[0].volumeInfo.publishedDate);
-        setCoverPhoto(`https://covers.openlibrary.org/b/isbn/${chosenBook}-M.jpg`)
+        const authors_details = response.items[0].volumeInfo.authors;
+        const title_details = response.items[0].volumeInfo.title;
+        const year_details = response.items[0].volumeInfo.publishedDate;
+       const photo_details = `https://covers.openlibrary.org/b/isbn/${chosenBook}-M.jpg`;
+       const details_object = {
+        authors_details: authors_details,
+        title_details: title_details,
+        year_details: year_details,
+        photo_details: photo_details
+       }
+       return details_object
     } 
 
     const onClickButtonClose = () => {
@@ -50,11 +57,11 @@ const SessionForm = ({ setModal }) => {
         console.log("location:", location)
         console.log("chosenBook:", chosenBook)
         
-        await fetchBookDetails();
-        console.log(title);
-        console.log(authors);
-        console.log(yearPublished);
-        console.log(coverPhoto);
+        const bookDetails = await fetchBookDetails();
+        console.log(bookDetails.title_details);
+        console.log(bookDetails.authors_details);
+        console.log(bookDetails.year_details);
+        console.log(bookDetails.photo_details);
 
         if (token) {
             fetch("/books", {
@@ -64,11 +71,10 @@ const SessionForm = ({ setModal }) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                authors: authors,
-                title: title,
-                year_published: yearPublished,
-                cover_photo: coverPhoto
-
+                authors: bookDetails.authors_details,
+                title: bookDetails.title_details,
+                year_published: bookDetails.year_details,
+                cover_photo: bookDetails.photo_details
               }),  
             })
             .then((response) => {
@@ -81,8 +87,8 @@ const SessionForm = ({ setModal }) => {
             })
             .then((data) =>{
                 console.log(data);
-                setBookObject(data.book);
-                console.log(bookObject);
+                // setBookObject(data.book);
+                // console.log(bookObject);
                 // update sessions array with new post
                 /* prevSessions is a parameter for the anonymous function. It represents 
                 the current state of sessions at the time the function is executed. */
@@ -102,7 +108,7 @@ const SessionForm = ({ setModal }) => {
                     body: JSON.stringify({
                         date: date,
                         location: location,
-                        chosen_book: bookObject._id
+                        chosen_book: data.book._id
                     
         
                       }),  
