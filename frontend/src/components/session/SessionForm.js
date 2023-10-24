@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import "./SessionForm.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Alert from "react-bootstrap/Alert";
 
 const SessionForm = ({ setModal }) => {
     const [date, setDate] = useState("");   
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
     const [token, setToken] = useState(window.localStorage.getItem("token"));
-    const [authors, setAuthors] = useState([]);
-    const [title, setTitle] = useState("");
-    const [yearPublished, setYearPublished] = useState("");
-    const [coverPhoto, setCoverPhoto] = useState("");
-    const [bookObject, setBookObject] = useState(""); 
+    const [alert, setAlert] = useState(false);
+    const [buttonClicked, setButtonClicked] = useState(false); // DO THIS TOMORROW
+
 
 
     const onHandleChangeDate = (event) => {
@@ -123,6 +122,8 @@ const SessionForm = ({ setModal }) => {
                     })
                     .then((data) =>{
                         console.log(data);
+                        setAlert(true); 
+
                     });
 
                 
@@ -130,7 +131,7 @@ const SessionForm = ({ setModal }) => {
         } else {
             console.log("No token");
         }
-
+        
 
     };
 
@@ -146,6 +147,7 @@ return (
                     <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
                     <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
                     <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
+                   { alert ? (<Alert variant="success">This is a success alert — check it out!</Alert>): <Alert variant="warning">This is an error alert — check it out!</Alert> }
                 </form>
             </div>
         </div>
