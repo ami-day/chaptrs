@@ -142,7 +142,7 @@ return (
             <div className="session-inner-box">
                 <div className="session-heading">Create A Bookclub Session</div>
                 <form className="session-form">
-                    <textarea className="session-input" type="input" value={date} placeholder="Date" onChange={onHandleChangeDate}></textarea>
+                    <input className="session-input" type="date" value={date} placeholder="Date" onChange={onHandleChangeDate}></input>
                     <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
                     <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
                     <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
