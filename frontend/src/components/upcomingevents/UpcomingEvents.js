@@ -31,6 +31,9 @@ const UpcomingEvents = () => {
   // }, []);
   // TODO: Check necessity of useEffect hook for user - do we need this as we are using a token below for session display?
 
+  // TODO: In order to dislpay one bookclub per component we can use the bookID which is used in both the book and the session objects.
+  // We could replicate the .find method as we did for title etc below and pass through both book and session.
+
   useEffect(() => {
     console.log("Checking sessions");
     if (token) {

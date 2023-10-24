@@ -19,6 +19,7 @@ const BookLabel = () => {
       })
         .then((response) => response.json())
         .then(async (data) => {
+          console.log("Hello data", data)
           window.localStorage.getItem("token", data.token);
           setBooks(data.books);
         });
