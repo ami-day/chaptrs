@@ -77,21 +77,23 @@ const UpcomingEvents = () => {
           <div className="text-wrapper">Upcoming Events</div>
         </div>
       </div>
-      <div className="upcoming-event-block">
-        {upcomingSessions ? (
-          <div className="book-wrapper">
-            <CoverLabel session={upcomingSessions[0]}></CoverLabel>
-            <div className="box">
-              <BookLabel session={upcomingSessions[0]}></BookLabel>
+      {upcomingSessions ? (
+        <div className="upcoming-event-block">
+          {upcomingSessions.map((session) => (
+            <div className="book-wrapper">
+              <CoverLabel session={session}></CoverLabel>
+              <div className="box">
+                <BookLabel session={session}></BookLabel>
+              </div>
+              <div className="box">
+                <SessionLabel session={session}></SessionLabel>
+              </div>
             </div>
-            <div className="box">
-              <SessionLabel session={upcomingSessions[0]}></SessionLabel>
-            </div>
-          </div>
-        ) : (
-          <div className="book-wrapper"></div>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="upcoming-event-block"></div>
+      )}
     </div>
   );
 };
