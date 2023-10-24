@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./upcomingevents.css";
 import BookLabel from "./BookLabel";
 import SessionLabel from "./SessionLabel";
+import CoverLabel from "./CoverLabel";
 import "../session/SessionForm";
 
 // TODO update other files (e.g. box.js/bookLabel.js/SessionLabel.js) - call hooks
@@ -10,6 +11,7 @@ const UpcomingEvents = () => {
   const [user, setUser] = useState("");
   const [sessions, setSessions] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
+  
 
   // useEffect(() => {
   //   console.log("Checking users")
@@ -63,11 +65,12 @@ const UpcomingEvents = () => {
       </div>
       <div className="upcoming-event-block">
         <div className="book-wrapper">
-          <img
+          <CoverLabel sessions={sessions}></CoverLabel>
+          {/* <img
             className="book"
             alt="Book"
             src="https://covers.openlibrary.org/b/isbn/9780008334840-M.jpg"
-          />
+          /> */}
           <div className="box">
             <BookLabel sessions={sessions}></BookLabel>
           </div>
