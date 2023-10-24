@@ -9,26 +9,26 @@ const logout = () => {
 
 const Navbar = ({currentPage}) => {
   return (
-    <div className="navbar">
-      <div className="navbar-container">
+    <div className="navbar navbar-custom navbar-expand-lg flex sticky-top mb-5" style={{background: '#a2c3a4c2'}}>
+      <div className="navbar-container container-fluid">
         <img className="logo" alt="Logo" src={logo} />
         <div className="column" />
         <div className="div">
           {currentPage === "homepage" && (
             <>
-              <Link className="text-wrapper" to="/">Home</Link>
-              <div className="text-wrapper-2">Dashboard</div>
-              <div className="text-wrapper-2">Community</div>
+              <Link className="text-wrapper nav-link active fw-bold"  to="/">Home</Link>
+              <div className="text-wrapper-2 mr-3" >Dashboard</div>
+              <div className="text-wrapper-2 mr-3">Community</div>
             </>
           )}
           
           {currentPage === 'signup' || currentPage === 'login' ? (
             <>
-            <Link className="text-wrapper-2" to="/login">Login</Link>
-            <Link className="text-wrapper-2" to="/signup">Signup</Link>
+            <Link className="text-wrapper-2 mr-3" to="/login">Login</Link>
+            <Link className="text-wrapper-2 mr-3" to="/signup">Signup</Link>
             </>
           ) : (
-            <Link className="text-wrapper-2" onClick={logout} to="/login">Logout</Link>
+            <Link className="text-wrapper-2 mr-3 nav-link" onClick={logout} to="/login">Logout</Link>
           )}
         </div>
       </div>
