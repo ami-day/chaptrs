@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./booklabel.css";
 // import "../upcomingevents.js";
-import sortBy from 'lodash/sortBy';
+import sortBy from "lodash/sortBy";
 
 const BookLabel = () => {
   const [token, _] = useState(window.localStorage.getItem("token"));
@@ -19,7 +19,7 @@ const BookLabel = () => {
       })
         .then((response) => response.json())
         .then(async (data) => {
-          console.log("Hello data", data)
+          console.log("Hello data", data);
           window.localStorage.getItem("token", data.token);
           setBooks(data.books);
         });
@@ -58,18 +58,19 @@ const BookLabel = () => {
     return foundBook ? foundBook.year_published : undefined;
   }
 
-  if(sessions) {
-  let upcoming = []
-  let past = []
-  sessions.forEach(session => {
-    if (new Date(session.date) >= new Date()) {
-      upcoming.push(session);
-    } else {
-      past.push(session);
-    }});
-    const upcoming_sorted = sortBy(upcoming,"date");
-    const past_sorted = sortBy(past,"date");
-  };
+  if (sessions) {
+    let upcoming = [];
+    let past = [];
+    sessions.forEach((session) => {
+      if (new Date(session.date) >= new Date()) {
+        upcoming.push(session);
+      } else {
+        past.push(session);
+      }
+    });
+    const upcoming_sorted = sortBy(upcoming, "date");
+    const past_sorted = sortBy(past, "date");
+  }
 
   return (
     <div className="label">
@@ -84,7 +85,9 @@ const BookLabel = () => {
                 <h3>Author: {bookIdToAuthors(session.chosen_book)}</h3>
               </div>
               <div>
-                <h3>Year Published: {bookIdToYearPublished(session.chosen_book)}</h3>
+                <h3>
+                  Year Published: {bookIdToYearPublished(session.chosen_book)}
+                </h3>
               </div>
             </div>
           ))
