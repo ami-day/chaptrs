@@ -7,20 +7,25 @@ import React, { useState } from "react";
 import "./layout.css";
 
 const Layout = () => {
+  const [token] = useState(window.localStorage.getItem("token"));
+
 
   const [modal, setModal] = useState(false) 
-  return (
-    <div>
-    <Navbar currentPage="homepage"></Navbar>
-      {modal && (<SessionForm setModal={setModal}> </SessionForm>)}
-      <div className={`${modal ? "blur" : ""}`}>
-      <Header setModal={setModal}></Header>
-      <UpcomingEvents></UpcomingEvents>
-      <PastEvents></PastEvents>
+  if(token) {
+    return (
+      <div>
+      <Navbar currentPage="homepage"></Navbar>
+        {modal && (<SessionForm setModal={setModal}> </SessionForm>)}
+        <div className={`${modal ? "blur" : ""}`}>
+        <Header setModal={setModal}></Header>
+        <UpcomingEvents></UpcomingEvents>
+        <PastEvents></PastEvents>
+        </div>
       </div>
-    </div>
+  
+    );
+  }
 
-  );
 };
 
 export default Layout;
