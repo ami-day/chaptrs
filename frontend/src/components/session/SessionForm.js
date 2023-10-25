@@ -30,6 +30,9 @@ const SessionForm = ({ setModal }) => {
         const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${chosenBook}`
         let response = await fetch(url);
         response = await response.json()
+        if (response.totalItems == 0) {
+            return {}
+        } else {
         const authors_details = response.items[0].volumeInfo.authors;
         const title_details = response.items[0].volumeInfo.title;
         const year_details = response.items[0].volumeInfo.publishedDate;
@@ -39,8 +42,9 @@ const SessionForm = ({ setModal }) => {
         title_details: title_details,
         year_details: year_details,
         photo_details: photo_details
+        
        }
-       return details_object
+       return details_object}
     } 
 
     const onClickButtonClose = () => {
@@ -80,6 +84,9 @@ const SessionForm = ({ setModal }) => {
                     return response.json();      
                 } else {
                     console.log("Book not successfully added");
+                    setButtonClicked(true);
+                    setAlert(false);
+                    console.log(buttonClicked);
                 }
             })
             .then((data) =>{
@@ -116,6 +123,9 @@ const SessionForm = ({ setModal }) => {
                             return response.json();      
                         } else {
                             console.log("Session not successfully added");
+                            setButtonClicked(true);
+                            setAlert(false);
+                            console.log(buttonClicked);
                         }
                     })
                     .then((data) =>{
@@ -129,7 +139,9 @@ const SessionForm = ({ setModal }) => {
             });
         } else {
             console.log("No token");
+            setButtonClicked(true);
             setAlert(false);
+            console.log(buttonClicked);
         }
         
 
@@ -148,7 +160,7 @@ return (
                     <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
                     <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
                     <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
-                    { alert ? (<Alert variant="success">Success! your session has been added.😍</Alert>): <Alert variant="warning">Error: session not successfully added🥲</Alert> }
+                    { alert ? (<Alert variant="success">Success! your session has been added.😍</Alert>) : (<Alert variant="warning">Error: session not successfully added🥲</Alert>) }
                 </form>
             </div>
         </div>
