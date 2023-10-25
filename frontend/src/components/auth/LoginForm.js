@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from '../navbar/Navbar';
-import './loginform.css'
+import './loginform.css';
+import email_icon from '../../images/email.svg';
+import lock from '../../images/lock-03.svg';
 
 const LoginForm = ({ navigate }) => {
 
@@ -46,10 +48,24 @@ const LoginForm = ({ navigate }) => {
             
             <div id="login_form_container ">
                 <form className="login_form" onSubmit={handleSubmit} >
-                    <input type="text" placeholder="Email" className="d-inline-flex form-control" value={ email } onChange={handleEmailChange} >
-                    </input>
-                    <input type="text" placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
-                    </input>
+                    <div className="row" style={{ padding: '10px' }}>
+                        <div className="col-auto" >
+                            <img className="form__icon" src={email_icon} alt="email_icon" />
+                        </div>
+                        <div className="col">
+                            <input type="text" placeholder="Email" className="d-inline-flex form-control" value={ email } onChange={handleEmailChange} >
+                            </input>
+                        </div>
+                    </div>
+                    <div className="row" style={{ padding: '10px' }}>
+                        <div className="col-auto">
+                            <img className="form__icon" src={lock} alt="lock-icon" />
+                        </div>
+                        <div className="col">
+                            <input type="text" placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
+                            </input>
+                        </div>
+                    </div>
                     <div className="justify-content-end">
                         <button className="btn bg-raisin-black custom-shadow-orange text-white" type="submit">Login</button>
                     </div>

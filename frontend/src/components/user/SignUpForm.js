@@ -135,7 +135,7 @@ const SignUpForm = ({ navigate }) => {
   const validateLocation = (location) => {
     const errors = [];
     if (location.length < 2) {
-      errors.push('UPDTE VALIDATION HERE')
+      errors.push('Please enter a valid location')
     }
     return errors
   }
@@ -143,7 +143,7 @@ const SignUpForm = ({ navigate }) => {
   const validateDate_Joined = (date_joined) => {
     const errors = [];
     if (date_joined.length < 2) {
-      errors.push('UPDTE VALIDATION HERE')
+      errors.push('Please enter a valid date')
     }
     return errors
   }
@@ -151,7 +151,7 @@ const SignUpForm = ({ navigate }) => {
   const validateProfile_Picture = (profile_picture) => {
     const errors = [];
     if (profile_picture.length < 2) {
-      errors.push('UPDTE VALIDATION HERE')
+      errors.push('Please enter a valid picture url')
     }
     return errors
   }
@@ -182,25 +182,25 @@ const SignUpForm = ({ navigate }) => {
                   </p>
               </div>
             <form className="login_form" onSubmit={handleSubmit}>
-              <div className ="row"> 
+              <div className ="row" style={{ padding: '10px' }}> 
                 <div className="col-auto">
-                  <img className="form__icon" src={userPic} alt="user_icon" />
+                  <img className="form__icon" style={{ padding: '0 0 0 0'}} src={userPic} alt="user_icon" />
                 </div>
                 <div className="col">
-                  <input className="form-control" placeholder="Username" id="username" type='text' value={username} onChange={handleUsernameChange} />
+                  <input className="form-control" style={{ boxSizing: 'border-box', padding: '10px' }} placeholder="Username" id="username" type='text' value={username} onChange={handleUsernameChange} />
                 </div>
               </div> {errors.username ? (
-                <div className="login-error-message d-flex justify-content-center">
+                <div className="login-error-message d-flex justify-content-center" style={{ padding: '0' }}>
                   <p className="error_message">
                     {errors.username}
                   </p>
                 </div>) : null}
-              <div className="row">
+              <div className="row" style={{ padding: '10px' }}>
                 <div className="col-auto"> 
                   <img className="form__icon" src={email_icon} alt="email_icon" />
                 </div>
                 <div className="col">
-                  <input className="form-control" placeholder="Email" id="email" type='text' value={email} onChange={handleEmailChange} />
+                  <input className="form-control" style={{ boxSizing: 'border-box', padding: '10px' }} placeholder="Email" id="email" type='text' value={email} onChange={handleEmailChange} />
                 </div>
               </div> {errors.email ? (
                 <div className="login-error-message d-flex justify-content-center">
@@ -208,12 +208,12 @@ const SignUpForm = ({ navigate }) => {
                     {errors.email}
                   </p>
                 </div>) : null}
-              <div className="row">
+              <div className="row" style={{ padding: '10px' }}>
                   <div className="col-auto">
                     <img className="form__icon" src={lock} alt="lock-icon" />
                   </div>
                   <div className="col">
-                    <input className="form-control" placeholder="Password" id="password" type={showPassword ? "text" : "password"} value={password} onChange={handlePasswordChange} />
+                    <input className="form-control" style={{ boxSizing: 'border-box', padding: '10px' }} placeholder="Password" id="password" type={showPassword ? "text" : "password"} value={password} onChange={handlePasswordChange} />
                   </div>
                   <div className="col-auto">
                     <img alt="show-password-icon" className="button__toggle" src={showPassword ? eye_opened : eye_closed} onClick={togglePassword} />
@@ -224,12 +224,12 @@ const SignUpForm = ({ navigate }) => {
                     {errors.password}
                   </p>
               </div>) : null}
-              <div className="row">
+              <div className="row" style={{ padding: '10px' }}>
                 <div className="col-auto">
                   <img className="form__icon" src={globe} alt="globe-icon" />
                 </div>
-                <div className="col" style={{ padding: '10px' }}>
-                  <input className="form-control" placeholder="Location" id="location" type="text" value={location} onChange={handleLocationChange} />
+                <div className="col">
+                  <input className="form-control" style={{ boxSizing: 'border-box', padding: '10px' }}  placeholder="Location" id="location" type="text" value={location} onChange={handleLocationChange} />
                 </div>
               </div> {errors.location ? (
                 <div className="login-error-message d-flex justify-content-center">
@@ -237,12 +237,12 @@ const SignUpForm = ({ navigate }) => {
                     {errors.location}
                   </p>
                 </div>) : null}
-              <div className="row">
+              <div className="row" style={{ padding: '10px' }}>
                 <div className="col-auto">
                   <img className="form__icon" src={calendar} alt="calendar-icon" />
                 </div>
-                <div className="col" style={{ padding: '10px' }}>
-                  <input className="form-control" placeholder="Date Joined" id="date_joined" type="text" value={date_joined} onChange={handleDate_JoinedChange} />
+                <div className="col">
+                  <input className="form-control" style={{ boxSizing: 'border-box', padding: '10px' }} placeholder="Date Joined" id="date_joined" type="text" value={date_joined} onChange={handleDate_JoinedChange} />
                 </div>
               </div> {errors.date_joined ? (
                 <div className="login-error-message d-flex justify-content-center">
@@ -250,12 +250,12 @@ const SignUpForm = ({ navigate }) => {
                     {errors.date_joined}
                   </p>
                 </div>) : null}
-              <div className="row">
+              <div className="row" style={{ padding: '10px' }}>
                 <div className="col-auto">
                   <img className="form__icon" src={person} alt="person_icon" />
                 </div>
-                <div className="col" style={{ padding: '10px' }}>
-                  <input className="form-control" placeholder="Picture URL" id="picture" type='text' value={profile_picture} onChange={handleProfile_PictureChange} />
+                <div className="col">
+                  <input className="form-control" style={{ boxSizing: 'border-box', padding: '10px' }} placeholder="Picture URL" id="picture" type='text' value={profile_picture} onChange={handleProfile_PictureChange} />
                 </div>
               </div>
               <div className="justify-content-end">
