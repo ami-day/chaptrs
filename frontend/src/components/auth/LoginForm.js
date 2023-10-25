@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Navbar from '../navbar/Navbar';
+import "font-awesome/css/font-awesome.min.css";
+import "./loginform.css";
 
 const LoginForm = ({ navigate }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [hide, setHide] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -36,6 +39,15 @@ const LoginForm = ({ navigate }) => {
         setPassword(newPassword);
     }
 
+    const hideHandler = () => {
+        if (hide == true) {
+          setHide(false);
+        } else {
+          setHide(true);
+        }
+      };
+    
+
     return (
         <>
         <Navbar currentPage = "login"/>
@@ -44,8 +56,13 @@ const LoginForm = ({ navigate }) => {
             <form className="login_form" onSubmit={handleSubmit} >
                 <input type="text" placeholder="Email" value={ email } onChange={handleEmailChange} >
                 </input>
-                <input type="password" placeholder="Password" value={ password } onChange={handlePasswordChange} >
+                <div>
+                <input type={hide ? "password" : "text"} placeholder="Password" value={ password } onChange={handlePasswordChange} >
                 </input>
+               <button type="button" className="hide-button btn btn-secondary">
+               {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
+                </button>
+          </div>
                 <button type="submit">Login</button>
                 {errorMessage && <div className="login-error-message">{errorMessage}</div>}
             </form>
