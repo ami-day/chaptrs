@@ -3,7 +3,7 @@
     width: 451px;
   }
   
-  .label .how-innovation-works {
+.label .how-innovation-works {
     color: #000000;
     font-family: "Roboto-Bold", Helvetica;
     font-size: 25px;
@@ -13,4 +13,24 @@
     width: 451px;
   }
 
+.sessions-font {
+
+    color: #000000;
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    margin-left: 40px;
+    margin-top: 60px;
+    width: 200px;
+
+  }
+  
+.upcoming-bookclub-book-information {
+
+  text-align: center;
+  display: grid;
+  align-items: center;
+  
+}
   

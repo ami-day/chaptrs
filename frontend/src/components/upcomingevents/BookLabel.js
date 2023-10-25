@@ -45,13 +45,13 @@ const BookLabel = ({ session }) => {
         {session ? (
           <div>
             <div>
-              <h3>Title: {bookIdToTitle(session.chosen_book)}</h3>
+              <h3 className="sessions-font">Title: {bookIdToTitle(session.chosen_book)}</h3>
             </div>
             <div>
-              <h3>Author: {bookIdToAuthors(session.chosen_book)}</h3>
+              <h3 className="sessions-font">Author: {bookIdToAuthors(session.chosen_book)}</h3>
             </div>
             <div>
-              <h3>
+              <h3 className="sessions-font">
                 Year Published: {bookIdToYearPublished(session.chosen_book)}
               </h3>
             </div>

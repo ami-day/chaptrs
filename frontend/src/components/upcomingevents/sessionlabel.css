@@ -13,3 +13,16 @@
     width: 472px;
   }
   
+
+  .sessions-font {
+
+    color: #000000;
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    margin-left: 40px;
+    margin-top: 60px;
+    width: 200px;
+
+  }

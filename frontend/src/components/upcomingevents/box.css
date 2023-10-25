@@ -1,6 +1,8 @@
 .box {
     height: 293px;
     width: 586px;
+    display: grid;
+    align-items: center;
   }
   
   .box .book-information {
@@ -9,4 +11,7 @@
     position: fixed;
     top: 0;
     width: 586px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
   }
