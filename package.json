@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "bootstrap": "^5.3.2",
+    "bootstrap-alerts": "^1.2.2",
+    "font-awesome": "^4.7.0",
     "mongodb": "^6.1.0",
+    "react-bootstrap-alert": "^1.0.7",
     "react-router-dom": "^6.17.0"
   }
 }

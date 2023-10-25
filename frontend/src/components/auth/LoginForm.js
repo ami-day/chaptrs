@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../navbar/Navbar';
+import './loginform.css';
+import email_icon from '../../images/email.svg';
+import lock from '../../images/lock-03.svg';
 import "font-awesome/css/font-awesome.min.css";
-import "./loginform.css";
+
 
 const LoginForm = ({ navigate }) => {
 
@@ -57,13 +60,29 @@ const LoginForm = ({ navigate }) => {
             
             <div id="login_form_container ">
                 <form className="login_form" onSubmit={handleSubmit} >
-                    <input type="text" placeholder="Email" className="d-inline-flex form-control" value={ email } onChange={handleEmailChange} >
-                    </input>
-                    <input type={hide ? "password" : "text"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
-                    </input>
-                    <button type="button" className="hide-button btn btn-secondary">
-               {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
-                </button>
+                    <div className="row" style={{ padding: '10px' }}>
+                        <div className="col-auto" >
+                            <img className="form__icon" src={email_icon} alt="email_icon" />
+                        </div>
+                        <div className="col">
+                            <input type="text" placeholder="Email" className="d-inline-flex form-control" value={ email } onChange={handleEmailChange} >
+                            </input>
+                        </div>
+                    </div>
+                    <div className="row" style={{ padding: '10px' }}>
+                        <div className="col-auto">
+                            <img className="form__icon" src={lock} alt="lock-icon" />
+                        </div>
+                        <div className="col">
+                            <input type={hide ? "password" : "text"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
+                            </input>
+                        <div className="col">
+                            <button type="button" className="hide-button btn btn-secondary">
+                            {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
+                            </button>
+                        </div>
+                        </div>
+                    </div>
                     <div className="justify-content-end">
                         <button className="btn bg-raisin-black custom-shadow-orange text-white" type="submit">Login</button>
                     </div>
