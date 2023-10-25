@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Navbar from '../navbar/Navbar';
-import './loginform.css'
+import "font-awesome/css/font-awesome.min.css";
+import "./loginform.css";
 
 const LoginForm = ({ navigate }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [hide, setHide] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -37,6 +39,15 @@ const LoginForm = ({ navigate }) => {
         setPassword(newPassword);
     }
 
+    const hideHandler = () => {
+        if (hide == true) {
+          setHide(false);
+        } else {
+          setHide(true);
+        }
+      };
+    
+
     return (
         <>
         <Navbar currentPage = "login"/>
@@ -50,6 +61,9 @@ const LoginForm = ({ navigate }) => {
                     </input>
                     <input type="text" placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
                     </input>
+                    <button type="button" className="hide-button btn btn-secondary">
+               {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
+                </button>
                     <div className="justify-content-end">
                         <button className="btn bg-raisin-black custom-shadow-orange text-white" type="submit">Login</button>
                     </div>

@@ -1,3 +1,15 @@
+
+.hide-button {
+    background-color: #B8D1BA!important;
+    border-color: #B8D1BA!important;
+    color: black;
+}
+
+#hide-icon {
+    background-color: #B8D1BA!important;
+    color: black;
+}
+
 .bg-ash-green {
     background-color: #B8D1BA;
 }
