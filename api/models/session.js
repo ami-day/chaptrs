@@ -7,7 +7,6 @@ const SessionSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
-            required: false
         },
     ],
     chosen_book: {

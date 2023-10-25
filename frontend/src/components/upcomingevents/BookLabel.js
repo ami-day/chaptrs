@@ -57,7 +57,7 @@ const BookLabel = ({ session }) => {
             </div>
           </div>
         ) : (
-          <h3>No Sessions Available</h3>
+          <h3>No Session Available</h3>
         )}
       </div>
     </div>
