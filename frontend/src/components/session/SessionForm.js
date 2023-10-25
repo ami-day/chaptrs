@@ -9,9 +9,7 @@ const SessionForm = ({ setModal }) => {
     const [chosenBook, setChosenBook] = useState("")
     const [token, setToken] = useState(window.localStorage.getItem("token"));
     const [alert, setAlert] = useState(false);
-    const [buttonClicked, setButtonClicked] = useState(false); // DO THIS TOMORROW
-
-
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     const onHandleChangeDate = (event) => {
         event.preventDefault();
@@ -122,7 +120,8 @@ const SessionForm = ({ setModal }) => {
                     })
                     .then((data) =>{
                         console.log(data);
-                        setAlert(true); 
+                        setButtonClicked(true);
+                        setAlert(true);
 
                     });
 
@@ -130,12 +129,14 @@ const SessionForm = ({ setModal }) => {
             });
         } else {
             console.log("No token");
+            setAlert(true);
         }
         
 
     };
 
 // This return section is the JSX that gets rendered on the webpage 
+if (buttonClicked) {
 return (
     <div className="session-container">
         <div className="session-box">
@@ -147,12 +148,31 @@ return (
                     <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
                     <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
                     <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
-                   { alert ? (<Alert variant="success">This is a success alert — check it out!</Alert>): <Alert variant="warning">This is an error alert — check it out!</Alert> }
+                    { alert ? (<Alert variant="success">Success! your session has been added.😍</Alert>): <Alert variant="warning">Error: session not successfully added🥲</Alert> }
                 </form>
             </div>
         </div>
     </div>
 );
+} else {
+    return (
+        <div className="session-container">
+            <div className="session-box">
+            <button type="button" className="btn-close session-btn-close" aria-label="Close" onClick={onClickButtonClose}></button>
+                <div className="session-inner-box">
+                    <div className="session-heading">Create A Bookclub Session</div>
+                    <form className="session-form">
+                        <input className="session-input" type="date" value={date} placeholder="Date" onChange={onHandleChangeDate}></input>
+                        <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
+                        <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
+                        <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+
+}
 }
 
 export default SessionForm;

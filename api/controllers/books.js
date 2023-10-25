@@ -22,7 +22,7 @@ const BooksController = {
 
       const token = TokenGenerator.jsonwebtoken(req.book_id)
       console.log("Generated Token:", token); // DEBUGGING
-      res.status(201).json({ message: 'O', tKoken: token, book: savedBook });
+      res.status(201).json({ message: 'O', token: token, book: savedBook });
     });
   },
 };
