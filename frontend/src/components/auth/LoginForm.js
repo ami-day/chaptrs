@@ -59,7 +59,7 @@ const LoginForm = ({ navigate }) => {
                 <form className="login_form" onSubmit={handleSubmit} >
                     <input type="text" placeholder="Email" className="d-inline-flex form-control" value={ email } onChange={handleEmailChange} >
                     </input>
-                    <input type="text" placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
+                    <input type={hide ? "password" : "text"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
                     </input>
                     <button type="button" className="hide-button btn btn-secondary">
                {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
