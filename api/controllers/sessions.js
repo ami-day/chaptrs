@@ -25,58 +25,36 @@ const SessionsController = {
             res.status(201).json({ message: 'OK', token: token});
         });
     },
-    // Add attendence 
 
-
-    // AddAttending: (req, res) => {
-    //     Session.findOne({ _id: req.params.session_id })
-    //         .populate("users_attending")
-    //         // Check what populate is doing 
-    //         .exec((err, session) => {
-    //             if (err) {
-    //                 throw err;
-    //             }
-    //             const user = req.user_id;
-    //             const isSessionLikedByUser = session.likes.includes(user);
-    //             if (isSessionLikedByUser) {
-    //                 session.likes.pop(user);
-    //             } else {
-    //                 session.likes.push(user);
-    //             }
-    //             session.save((err) => {
-    //             if (err) {
-    //                 throw err;
-    //             }
-    //             res.status(201).json({ session: session });
-    //             });
-    //         });
-    //     },
-
-    AddAttending: (req, res) => {
+    /**
+     * Handles user attendance for a session.
+     * Increments the attendance count for the specified session and updates the database.
+     *
+     * @param {Object} req - The HTTP request object
+     * @param {Object} res - The HTTP response object
+     */
+    AddAttending: async (req, res) => {
         const sessionId = req.params.session_id;
-        const userId = req.user_id;
-
-        Session.findOne({ _id: sessionId }, (err, session) => {
-            if (err) {
-                return res.status(500).json({ error: "Internal Server Error" });
+        const userId = req.body.user_id;
+    
+        try {
+            const session = await Session.findOne({ _id: sessionId });
+            if (!session) {
+                console.log("Session not found:", sessionId);
+                return res.status(404).json({ error: "Session not found" });
             }
 
-            // Check if the user is already attending the session
-            const isUserAttending = session.users_attending.includes(userId);
+            session.attending += 1;
 
-            if (!isUserAttending) {
-                // If the user is not already attending, add them to the list of attendees
-                session.users_attending.push(userId);
-            }
+            console.log("Updated attending count:", session.attending);
 
-            session.save((err) => {
-                if (err) {
-                    return res.status(500).json({ error: "Internal Server Error" });
-                }
+            await session.save();
 
-                res.status(200).json({ session: session });
-            });
-        });
+            res.status(200).json({ success: true, attending: session.attending }); // Include attending count in the response
+            } catch (err) {
+            console.error("Error:", err);
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
     },
 };
 
