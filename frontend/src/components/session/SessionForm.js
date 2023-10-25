@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import "./SessionForm.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Alert from "react-bootstrap/Alert";
 
 const SessionForm = ({ setModal }) => {
     const [date, setDate] = useState("");   
     const [location, setLocation] = useState("");
     const [chosenBook, setChosenBook] = useState("")
     const [token, setToken] = useState(window.localStorage.getItem("token"));
-    const [authors, setAuthors] = useState([]);
-    const [title, setTitle] = useState("");
-    const [yearPublished, setYearPublished] = useState("");
-    const [coverPhoto, setCoverPhoto] = useState("");
-    const [bookObject, setBookObject] = useState(""); 
-
+    const [alert, setAlert] = useState(false);
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     const onHandleChangeDate = (event) => {
         event.preventDefault();
@@ -33,6 +30,9 @@ const SessionForm = ({ setModal }) => {
         const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${chosenBook}`
         let response = await fetch(url);
         response = await response.json()
+        if (response.totalItems == 0) {
+            return {}
+        } else {
         const authors_details = response.items[0].volumeInfo.authors;
         const title_details = response.items[0].volumeInfo.title;
         const year_details = response.items[0].volumeInfo.publishedDate;
@@ -42,8 +42,9 @@ const SessionForm = ({ setModal }) => {
         title_details: title_details,
         year_details: year_details,
         photo_details: photo_details
+        
        }
-       return details_object
+       return details_object}
     } 
 
     const onClickButtonClose = () => {
@@ -83,6 +84,9 @@ const SessionForm = ({ setModal }) => {
                     return response.json();      
                 } else {
                     console.log("Book not successfully added");
+                    setButtonClicked(true);
+                    setAlert(false);
+                    console.log(buttonClicked);
                 }
             })
             .then((data) =>{
@@ -119,22 +123,32 @@ const SessionForm = ({ setModal }) => {
                             return response.json();      
                         } else {
                             console.log("Session not successfully added");
+                            setButtonClicked(true);
+                            setAlert(false);
+                            console.log(buttonClicked);
                         }
                     })
                     .then((data) =>{
                         console.log(data);
+                        setButtonClicked(true);
+                        setAlert(true);
+
                     });
 
                 
             });
         } else {
             console.log("No token");
+            setButtonClicked(true);
+            setAlert(false);
+            console.log(buttonClicked);
         }
-
+        
 
     };
 
 // This return section is the JSX that gets rendered on the webpage 
+if (buttonClicked) {
 return (
     <div className="session-container">
         <div className="session-box">
@@ -146,11 +160,31 @@ return (
                     <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
                     <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
                     <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
+                    { alert ? (<Alert variant="success">Success! your session has been added.😍</Alert>) : (<Alert variant="warning">Error: session not successfully added🥲</Alert>) }
                 </form>
             </div>
         </div>
     </div>
 );
+} else {
+    return (
+        <div className="session-container">
+            <div className="session-box">
+            <button type="button" className="btn-close session-btn-close" aria-label="Close" onClick={onClickButtonClose}></button>
+                <div className="session-inner-box">
+                    <div className="session-heading">Create A Bookclub Session</div>
+                    <form className="session-form">
+                        <input className="session-input" type="date" value={date} placeholder="Date" onChange={onHandleChangeDate}></input>
+                        <textarea className="session-input" type="input" value={location} placeholder="Location" onChange={onHandleChangeLocation}></textarea>
+                        <textarea className="session-input" type="input" value={chosenBook} placeholder="Chosen Book ISBN" onChange={onHandleChangeChosenBook}></textarea>
+                        <button className="session-btn" onClick={handleSubmitSession}>Create Session</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+
+}
 }
 
 export default SessionForm;
