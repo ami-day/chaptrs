@@ -8,5 +8,7 @@ const SessionsController = require("../controllers/sessions");
 
 router.post("/", tokenChecker, SessionsController.Create);
 router.get("/", tokenChecker, SessionsController.Index);
+router.post("/:session_id/attend", tokenChecker, SessionsController.AddAttending);
+
 
 module.exports = router;
