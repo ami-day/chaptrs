@@ -14,7 +14,6 @@ const SessionsController = {
         });
     },
 
-
     Create: (req, res) => {
         const session = new Session(req.body);
         session.save((err) => {
@@ -52,31 +51,28 @@ const SessionsController = {
     //         });
     //     },
 
-    AddAttending: (req, res) => {
+    AddAttending: async (req, res) => {
         const sessionId = req.params.session_id;
-        const userId = req.user_id;
-
-        Session.findOne({ _id: sessionId }, (err, session) => {
-            if (err) {
-                return res.status(500).json({ error: "Internal Server Error" });
+    
+        try {
+            const session = await Session.findOne({ _id: sessionId });
+            if (!session) {
+                console.log("Session not found:", sessionId);
+                return res.status(404).json({ error: "Session not found" });
             }
+            console.log("Session found:", session);
 
-            // Check if the user is already attending the session
-            const isUserAttending = session.users_attending.includes(userId);
+            session.attending += 1;
+    
+            console.log("Updated attending count:", session.attending);
 
-            if (!isUserAttending) {
-                // If the user is not already attending, add them to the list of attendees
-                session.users_attending.push(userId);
-            }
+            await session.save();
+            res.status(200).json({ session: session });
+        } catch (err) {
+            console.error("Error:", err);
 
-            session.save((err) => {
-                if (err) {
-                    return res.status(500).json({ error: "Internal Server Error" });
-                }
-
-                res.status(200).json({ session: session });
-            });
-        });
+            return res.status(500).json({ error: "Internal Server Error" });
+        }
     },
 };
 

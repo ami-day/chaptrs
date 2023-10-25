@@ -6,20 +6,22 @@ import CoverLabel from "./CoverLabel";
 import "../session/SessionForm";
 import sortBy from "lodash/sortBy";
 
-// TODO update other files (e.g. box.js/bookLabel.js/SessionLabel.js) - call hooks
-
 const UpcomingEvents = () => {
   const [user, setUser] = useState("");
   const [upcomingSessions, setUpcomingSessions] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   const [membersAttending, setMembersAttending] = useState(0);
+  // TODO: Do we need a usestate for userattending as well? 
 
+  const numberOfUsersAttending = (session) => {
+    return session.users_attending ? session.users_attending.length : 0;
+  };
 
   const isUserAttending = (session) => {
     if (user && session.users_attending) {
       return session.users_attending.includes(user._id);
     }
-    return false;
+      return false;
   };
 
   function getUpcomingSessions(sessions) {
@@ -58,13 +60,12 @@ const UpcomingEvents = () => {
 
     // Prepare the data to send to the server
     const data = {
-      session_id: session._id, // Replace with the actual ID field in your session object
-      user_id: user._id, // Replace with the actual ID field in your user object
-      action: isAttending ? "Unattend" : "attend",
+      session_id: session._id,
+      user_id: user._id,
     };
 
     // Send a request to your server to handle session attendance
-    fetch("/api/session/attend", {
+    fetch(`/sessions/${session._id}/attend`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,19 +79,31 @@ const UpcomingEvents = () => {
           // Update the local state to reflect the change in attending status
           const updatedSessions = upcomingSessions.map((s) => {
             if (s._id === session._id) {
-              if (isAttending) {
+              if (!s.attending) {
+                s.attending = 0; // Initialize the count if it doesn't exist
+              }
+  
+              // Check if the user is already attending
+              if (s.users_attending.includes(user._id)) {
                 s.users_attending = s.users_attending.filter(
                   (userId) => userId !== user._id
                 );
-                setMembersAttending(membersAttending - 1); // Decrement
+                s.attending -= 1; // Decrement
+                setMembersAttending(s.attending);
               } else {
                 s.users_attending.push(user._id);
-                setMembersAttending(membersAttending + 1); // Increment
+                s.attending += 1; // Increment
+                setMembersAttending(s.attending);
               }
             }
             return s;
           });
 
+          const sessionBeingAttended = updatedSessions.find((s) => s._id === session._id);
+          if (sessionBeingAttended) {
+            setMembersAttending(sessionBeingAttended.attending);
+          }
+  
           setUpcomingSessions(updatedSessions);
         } else {
           // Handle errors if necessary
@@ -115,7 +128,7 @@ const UpcomingEvents = () => {
             <BookLabel session={session}></BookLabel>
           </div>
           <div className="box">
-            <SessionLabel session={session} membersAttending={membersAttending} />
+            <SessionLabel session={session} membersAttending={numberOfUsersAttending(session)} />
           </div>
           <button onClick={() => handleAttendSession(session)}>
             {isUserAttending(session) ? "Unattend" : "Attend"}
