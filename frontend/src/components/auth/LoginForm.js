@@ -4,6 +4,8 @@ import './loginform.css';
 import email_icon from '../../images/email.svg';
 import lock from '../../images/lock-03.svg';
 import "font-awesome/css/font-awesome.min.css";
+import eye_opened from '../../images/View.svg';
+import eye_closed from '../../images/View_hide.svg';
 
 
 const LoginForm = ({ navigate }) => {
@@ -11,7 +13,7 @@ const LoginForm = ({ navigate }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [hide, setHide] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -42,13 +44,11 @@ const LoginForm = ({ navigate }) => {
         setPassword(newPassword);
     }
 
-    const hideHandler = () => {
-        if (hide == true) {
-          setHide(false);
-        } else {
-          setHide(true);
-        }
-      };
+
+
+    const togglePassword = () => {
+        setShowPassword(!showPassword);
+    }
     
 
     return (
@@ -74,14 +74,12 @@ const LoginForm = ({ navigate }) => {
                             <img className="form__icon" src={lock} alt="lock-icon" />
                         </div>
                         <div className="col">
-                            <input type={hide ? "password" : "text"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
+                            <input type={showPassword ? "text" : "password"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
                             </input>
-                        <div className="col">
-                            <button type="button" className="hide-button btn btn-secondary">
-                            {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
-                            </button>
                         </div>
-                        </div>
+                        <div className="col-auto">
+                            <img alt="show-password-icon" className="button__toggle" src={showPassword ? eye_opened : eye_closed} onClick={togglePassword} />
+                        </div> 
                     </div>
                     <div className="justify-content-end">
                         <button className="btn bg-raisin-black custom-shadow-orange text-white" type="submit">Login</button>
