@@ -1,9 +1,8 @@
 .header {
-    align-items: center;
-    background-color: #ffffff1a;
-    display: flex;
-    height: 968px;
-    padding: 133.33px 64px 101px 85.33px;
+    /* align-items: center; */
+    /* display: flex;  */
+    /* height: 968px; */
+    /* padding: 133.33px 64px 101px 85.33px; */
     position: relative;
     width: 1920px;
   }
@@ -18,7 +17,7 @@
     width: 1090px;
   }
   
-  .header .content {
+  /* .header .content {
     align-items: flex-start;
     align-self: stretch;
     display: flex;
@@ -27,7 +26,7 @@
     gap: 21.33px;
     position: relative;
     width: 100%;
-  }
+  } */
   
   .header .text-wrapper {
     align-self: stretch;
@@ -86,7 +85,7 @@
     white-space: unset !important;
   }
   
-  .header .fang-wei-lin {
+  /* .header .fang-wei-lin {
     height: 837px;
     margin-bottom: -51.67px;
     margin-left: -43px;
@@ -94,4 +93,4 @@
     object-fit: cover;
     position: relative;
     width: 650px;
-  }
+  } */

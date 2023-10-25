@@ -1,13 +1,15 @@
 .session-container {
     display: flex;
-    position: absolute;
-    top: 50px;
-    right: 500px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     z-index: 2;  /*gives importance to this layer*/ 
     justify-content: center;
     align-items: center;
-    width: 1000px;
-    height: 1000px;
+    max-width: 1000px;
+    max-height: 1000px;
     padding: 1cm;
     margin: 0 auto; /* Center container horizontally */
 }

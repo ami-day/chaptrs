@@ -3,6 +3,7 @@ import Button from "./Button";
 import "./header.css";
 const picture = require('./homepage-pic.jpg');
 
+
 const Header = ({setModal}) => {
   
   const onClickHandler = () => {
@@ -12,8 +13,8 @@ const Header = ({setModal}) => {
   }
 
   return (
-    <div className="header">
-      <div className="header-left">
+    <div className="header row justify-content-center" >
+      <div className="header-left col-auto" style={{paddingTop: "150px"}} >
         <div className="content">
           <div className="text-wrapper">Chaptrs</div>
           <p className="div">
@@ -24,8 +25,10 @@ const Header = ({setModal}) => {
         <div className="actions">
           <Button className="button-instance" divClassName="design-component-instance-node" text="Create an Event" onClick={onClickHandler} />
         </div>
+        </div>
+      <div className="header-right col-4">
+        <img className="img-fluid fang-wei-lin" alt="main-picture" src={picture}  style={{minWidth: "10%", maxWidth: "100%"}} />
       </div>
-      <img className="fang-wei-lin" alt="main-picture" src={picture} />
     </div>
   );
 };
