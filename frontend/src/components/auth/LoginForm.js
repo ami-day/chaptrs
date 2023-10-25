@@ -51,22 +51,28 @@ const LoginForm = ({ navigate }) => {
     return (
         <>
         <Navbar currentPage = "login"/>
-        <h1>Login</h1>
-        <div id="login_form_container">
-            <form className="login_form" onSubmit={handleSubmit} >
-                <input type="text" placeholder="Email" value={ email } onChange={handleEmailChange} >
-                </input>
-                <div>
-                <input type={hide ? "password" : "text"} placeholder="Password" value={ password } onChange={handlePasswordChange} >
-                </input>
-               <button type="button" className="hide-button btn btn-secondary">
+        <div className="d-flex flex-column justify-content-center align-items-center vh-70  "> 
+        <h1 className="d-flex justify-content-center ml-5 p-3 ">Login</h1>
+        <div className="container py-5 h-100  w-50 bg-ash-green" style={{borderRadius: '20px', maxWidth: '600px'}}> 
+            
+            <div id="login_form_container ">
+                <form className="login_form" onSubmit={handleSubmit} >
+                    <input type="text" placeholder="Email" className="d-inline-flex form-control" value={ email } onChange={handleEmailChange} >
+                    </input>
+                    <input type="text" placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
+                    </input>
+                    <button type="button" className="hide-button btn btn-secondary">
                {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
                 </button>
-          </div>
-                <button type="submit">Login</button>
-                {errorMessage && <div className="login-error-message">{errorMessage}</div>}
-            </form>
-            <p onClick={() => navigate('/signup')}>Don't yet have an account? <i className="text-primary">Sign up here</i></p>
+                    <div className="justify-content-end">
+                        <button className="btn bg-raisin-black custom-shadow-orange text-white" type="submit">Login</button>
+                    </div>
+                    {errorMessage && <div className="login-error-message d-flex justify-content-center">{errorMessage}</div>}
+                </form>
+                <p className="text-muted d-flex justify-content-center" >Don't yet have an account? </p>
+                <i className="text-primary d-flex justify-content-center pointer-on-hover" onClick={() => navigate('/signup')}>Sign up here</i>
+                </div>
+            </div>
         </div>
     </>
     )

@@ -1,10 +1,30 @@
 .hide-button {
-    background-color: white!important;
-    border-color: white!important;
+    background-color: #B8D1BA!important;
+    border-color: #B8D1BA!important;
     color: black;
 }
 
 #hide-icon {
-    background-color: white!important;
+    background-color: #B8D1BA!important;
     color: black;
+}
+
+.bg-ash-green {
+    background-color: #B8D1BA;
+}
+
+.custom-shadow-orange:hover {
+    background-color: #F27807;
+}
+
+.bg-raisin-black {
+    background-color: #282938;
+}
+
+.bg-safety-orange {
+    background-color: #F27807;
+}
+
+.pointer-on-hover {
+    cursor: pointer;
 }
