@@ -26,6 +26,7 @@
     "mongoose": "^5.8.11",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15",
+    "react-alert": "^7.0.3",
     "superagent": "^8.0.0",
     "supertest": "^6.2.4"
   },

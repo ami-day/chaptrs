@@ -3,12 +3,15 @@ import Navbar from '../navbar/Navbar';
 import './loginform.css';
 import email_icon from '../../images/email.svg';
 import lock from '../../images/lock-03.svg';
+import "font-awesome/css/font-awesome.min.css";
+
 
 const LoginForm = ({ navigate }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [hide, setHide] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -39,6 +42,15 @@ const LoginForm = ({ navigate }) => {
         setPassword(newPassword);
     }
 
+    const hideHandler = () => {
+        if (hide == true) {
+          setHide(false);
+        } else {
+          setHide(true);
+        }
+      };
+    
+
     return (
         <>
         <Navbar currentPage = "login"/>
@@ -62,8 +74,13 @@ const LoginForm = ({ navigate }) => {
                             <img className="form__icon" src={lock} alt="lock-icon" />
                         </div>
                         <div className="col">
-                            <input type="text" placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
+                            <input type={hide ? "password" : "text"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
                             </input>
+                        <div className="col">
+                            <button type="button" className="hide-button btn btn-secondary">
+                            {!hide ? (<i id="hide-icon" className="fa fa-eye" onClick={hideHandler}></i>) : (<i id="hide-icon" className="fa fa-eye-slash" onClick={hideHandler}></i>)}
+                            </button>
+                        </div>
                         </div>
                     </div>
                     <div className="justify-content-end">

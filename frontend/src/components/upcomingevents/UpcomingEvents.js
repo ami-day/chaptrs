@@ -12,27 +12,15 @@ const UpcomingEvents = () => {
   const [user, setUser] = useState("");
   const [upcomingSessions, setUpcomingSessions] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
+  const [membersAttending, setMembersAttending] = useState(0);
 
-  // useEffect(() => {
-  //   console.log("Checking users")
-  //   if (token) {
-  //     fetch("/users", {
-  //       method: "get",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         console.log("user data", data.user)
-  //         setUser(data.user);
-  //       });
-  //   }
-  // }, []);
-  // TODO: Check necessity of useEffect hook for user - do we need this as we are using a token below for session display?
 
-  // TODO: In order to dislpay one bookclub per component we can use the bookID which is used in both the book and the session objects.
-  // We could replicate the .find method as we did for title etc below and pass through both book and session.
+  const isUserAttending = (session) => {
+    if (user && session.users_attending) {
+      return session.users_attending.includes(user._id);
+    }
+    return false;
+  };
 
   function getUpcomingSessions(sessions) {
     let upcoming = [];
@@ -64,37 +52,82 @@ const UpcomingEvents = () => {
     }
   }, []);
 
-  // const sortByDate = (array) => {
-  //   array.sort((a, b) => {
-  //     return new Date(b.createdAt) - new Date(a.createdAt);
-  //   });
-  // }
+  const handleAttendSession = (session) => {
+    // Check if the user is already attending the session
+    const isAttending = isUserAttending(session);
+
+    // Prepare the data to send to the server
+    const data = {
+      session_id: session._id, // Replace with the actual ID field in your session object
+      user_id: user._id, // Replace with the actual ID field in your user object
+      action: isAttending ? "Unattend" : "attend",
+    };
+
+    // Send a request to your server to handle session attendance
+    fetch("/api/session/attend", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.success) {
+          // Update the local state to reflect the change in attending status
+          const updatedSessions = upcomingSessions.map((s) => {
+            if (s._id === session._id) {
+              if (isAttending) {
+                s.users_attending = s.users_attending.filter(
+                  (userId) => userId !== user._id
+                );
+                setMembersAttending(membersAttending - 1); // Decrement
+              } else {
+                s.users_attending.push(user._id);
+                setMembersAttending(membersAttending + 1); // Increment
+              }
+            }
+            return s;
+          });
+
+          setUpcomingSessions(updatedSessions);
+        } else {
+          // Handle errors if necessary
+          console.error("Failed to update attendance status");
+        }
+      });
+  };
 
   return (
-    <div className="upcoming-events">
-      <div className="section-title">
-        <div className="content">
-          <div className="text-wrapper">Upcoming Events</div>
-        </div>
-      </div>
-      {upcomingSessions ? (
-        <div className="upcoming-event-block">
-          {upcomingSessions.map((session) => (
-            <div className="book-wrapper">
-              <CoverLabel session={session}></CoverLabel>
-              <div className="box">
-                <BookLabel session={session}></BookLabel>
-              </div>
-              <div className="box">
-                <SessionLabel session={session}></SessionLabel>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="upcoming-event-block"></div>
-      )}
+<div className="upcoming-events">
+  <div className="section-title">
+    <div className="content">
+      <div className="text-wrapper">Upcoming Events</div>
     </div>
+  </div>
+  {upcomingSessions ? (
+    <div className="upcoming-event-block">
+      {upcomingSessions.map((session) => (
+        <div className="book-wrapper">
+          <CoverLabel session={session}></CoverLabel>
+          <div className="box">
+            <BookLabel session={session}></BookLabel>
+          </div>
+          <div className="box">
+            <SessionLabel session={session} membersAttending={membersAttending} />
+          </div>
+          <button onClick={() => handleAttendSession(session)}>
+            {isUserAttending(session) ? "Unattend" : "Attend"}
+          </button>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div className="upcoming-event-block"></div>
+  )}
+</div>
+
   );
 };
 
