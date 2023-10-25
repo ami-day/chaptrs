@@ -45,7 +45,7 @@
   position: relative;
 }
 
-.past-events .upcoming-event-block {
+.past-events .past-event-block {
   align-items: flex-start;
   display: flex;
   gap: 42.67px;
