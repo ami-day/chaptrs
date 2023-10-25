@@ -74,7 +74,7 @@ const LoginForm = ({ navigate }) => {
                             <img className="form__icon" src={lock} alt="lock-icon" />
                         </div>
                         <div className="col">
-                            <input type={showPassword ? "password" : "text"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
+                            <input type={showPassword ? "text" : "password"} placeholder="Password" className=" d-inline-flex form-control" value={ password } onChange={handlePasswordChange} >
                             </input>
                         </div>
                         <div className="col-auto">
