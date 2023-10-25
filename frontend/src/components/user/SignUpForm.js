@@ -173,68 +173,90 @@ const SignUpForm = ({ navigate }) => {
     <>
       <body>
         <Navbar currentPage="signup" />
-        <div className="d-flex flex-column justify-content-center align-items-center vh-70">
+        <div className="d-flex flex-column justify-content-center align-items-center">
           <h1 className="d-flex justify-content-center ml-5 p-3">Sign Up</h1>
-          <div className="container py-5 h-100 w-50 bg-ash-green" style={{ borderRadius: '20px', maxWidth: '600px' }}>
+            <div className="container pb-5  px-4 pt-3 h-100 w-50 bg-ash-green" style={{ borderRadius: '20px', maxWidth: '600px'}}>
+              <div className="justify-content-beg" style={{ padding: '10px 0' }}>
+                <h4 className="title">Hello, Bookworm!</h4>
+                  <p className="greeting-text">Enter your personal details and start your chapter with us!
+                  </p>
+              </div>
             <form className="login_form" onSubmit={handleSubmit}>
               <div className ="row"> 
-                <div className="form__input-box col-auto">
+                <div className="col-auto">
                   <img className="form__icon" src={userPic} alt="user_icon" />
                 </div>
-                <div classname="col">
+                <div className="col">
                   <input className="form-control" placeholder="Username" id="username" type='text' value={username} onChange={handleUsernameChange} />
                 </div>
-              </div>
-                {errors.username ? (
+              </div> {errors.username ? (
                 <div className="login-error-message d-flex justify-content-center">
                   <p className="error_message">
                     {errors.username}
                   </p>
                 </div>) : null}
-              <div className="form__input-box">
-                <img className="form__icon" src={email_icon} alt="email_icon" />
-                <input className="form-control" placeholder="Email" id="email" type='text' value={email} onChange={handleEmailChange} />
-              </div>
-              {errors.email ? (
+              <div className="row">
+                <div className="col-auto"> 
+                  <img className="form__icon" src={email_icon} alt="email_icon" />
+                </div>
+                <div className="col">
+                  <input className="form-control" placeholder="Email" id="email" type='text' value={email} onChange={handleEmailChange} />
+                </div>
+              </div> {errors.email ? (
                 <div className="login-error-message d-flex justify-content-center">
                   <p className="error_message">
                     {errors.email}
                   </p>
                 </div>) : null}
-              <div className="form__input-box">
-                <img className="form__icon" src={lock} alt="lock-icon" />
-                <input className="form-control" placeholder="Password" id="password" type={showPassword ? "text" : "password"} value={password} onChange={handlePasswordChange} />
-                <img alt="show-password-icon" className="button__toggle" src={showPassword ? eye_opened : eye_closed} onClick={togglePassword} />
-              </div>
-              {errors.password ? (
-                <div className="login-error-message d-flex justify-content-center">
+              <div className="row">
+                  <div className="col-auto">
+                    <img className="form__icon" src={lock} alt="lock-icon" />
+                  </div>
+                  <div className="col">
+                    <input className="form-control" placeholder="Password" id="password" type={showPassword ? "text" : "password"} value={password} onChange={handlePasswordChange} />
+                  </div>
+                  <div className="col-auto">
+                    <img alt="show-password-icon" className="button__toggle" src={showPassword ? eye_opened : eye_closed} onClick={togglePassword} />
+                  </div>
+              </div> {errors.password ? (
+              <div className="login-error-message d-flex justify-content-center">
                   <p className="error_message">
                     {errors.password}
                   </p>
-                </div>) : null}
-              <div className="form__input-box">
-                <img className="form__icon" src={globe} alt="globe-icon" />
-                <input className="form-control" placeholder="Location" id="location" type="text" value={location} onChange={handleLocationChange} />
-              </div>
-              {errors.location ? (
+              </div>) : null}
+              <div className="row">
+                <div className="col-auto">
+                  <img className="form__icon" src={globe} alt="globe-icon" />
+                </div>
+                <div className="col" style={{ padding: '10px' }}>
+                  <input className="form-control" placeholder="Location" id="location" type="text" value={location} onChange={handleLocationChange} />
+                </div>
+              </div> {errors.location ? (
                 <div className="login-error-message d-flex justify-content-center">
                   <p className="error_message">
                     {errors.location}
                   </p>
                 </div>) : null}
-              <div className="form__input-box">
-                <img className="form__icon" src={calendar} alt="calendar-icon" />
-                <input className="form-control" placeholder="Date Joined" id="date_joined" type="text" value={date_joined} onChange={handleDate_JoinedChange} />
-              </div>
-              {errors.date_joined ? (
+              <div className="row">
+                <div className="col-auto">
+                  <img className="form__icon" src={calendar} alt="calendar-icon" />
+                </div>
+                <div className="col" style={{ padding: '10px' }}>
+                  <input className="form-control" placeholder="Date Joined" id="date_joined" type="text" value={date_joined} onChange={handleDate_JoinedChange} />
+                </div>
+              </div> {errors.date_joined ? (
                 <div className="login-error-message d-flex justify-content-center">
                   <p className="error_message">
                     {errors.date_joined}
                   </p>
                 </div>) : null}
-              <div className="form__input-box">
-                <img className="form__icon" src={person} alt="person_icon" />
-                <input className="form-control" placeholder="Picture URL" id="picture" type='text' value={profile_picture} onChange={handleProfile_PictureChange} />
+              <div className="row">
+                <div className="col-auto">
+                  <img className="form__icon" src={person} alt="person_icon" />
+                </div>
+                <div className="col" style={{ padding: '10px' }}>
+                  <input className="form-control" placeholder="Picture URL" id="picture" type='text' value={profile_picture} onChange={handleProfile_PictureChange} />
+                </div>
               </div>
               <div className="justify-content-end">
                 <button className="btn bg-raisin-black custom-shadow-orange text-white" type="submit" disabled={hasErrors(email, password, errors)} id='submit'>Sign Up</button>
@@ -249,9 +271,7 @@ const SignUpForm = ({ navigate }) => {
             </div>
           </form>
           </div>
-          <div className="container-panel container-panel_right">
-            <h3 className="title">Hello, Bookworm!</h3>
-            <p className="greeting-text">Enter your personal details and start your chapter with us!</p>
+          <div className="container-panel">
             <p onClick={() => navigate('/login')}>Already have an account? <i className="text-primary">Log in here</i></p>
           </div>
         </div>
