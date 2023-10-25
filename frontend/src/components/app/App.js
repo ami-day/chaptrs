@@ -15,8 +15,9 @@ import {
 const App = () => {
     return (
         <Routes>
-          <Route path='/'  element={<Layout navigate={ useNavigate() }/>}/>
+          
           <Route path="/login" element={<LoginForm navigate={useNavigate()}/>}/>
+          <Route path='/'  element={<Layout navigate={ useNavigate() }/>}/>
           <Route
           path="/signup"
           element={<SignUpForm navigate={useNavigate()} />}
