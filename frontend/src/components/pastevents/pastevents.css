@@ -4,11 +4,10 @@
   display: flex;
   flex-direction: column;
   gap: 51px;
-  height: 1237px;
   justify-content: center;
   padding: 101px 85.33px 106px;
   position: relative;
-  width: 1931px;
+  width: 100vw;
 }
 
 .past-events .section-title {
@@ -45,6 +44,11 @@
   position: relative;
 }
 
+#scrollable {
+  overflow: scroll;
+  height: 760px;
+}
+
 .past-events .past-event-block {
   align-items: flex-start;
   display: flex;
@@ -52,7 +56,9 @@
   height: 377px;
   justify-content: center;
   position: relative;
-  width: 1750px;
+  max-width: 100vw;
+  width: 1800px;
+  overflow: scroll;
 }
 
 .past-events .book-wrapper {

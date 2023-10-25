@@ -50,8 +50,9 @@ const book = require('../upcomingevents/book.jpg');
     </div>
   </div>
   {pastSessions ? (
-    <div className="past-event-block">
+    <div id="scrollable">
       {pastSessions.map((session) => (
+        <div className="past-event-block">
         <div className="book-wrapper">
           <CoverLabel session={session}></CoverLabel>
           <div className="box">
@@ -61,6 +62,9 @@ const book = require('../upcomingevents/book.jpg');
             <SessionLabel session={session} />
           </div>
         </div>
+        <div>
+          </div>
+          </div>
       ))}
     </div>
   ) : (
