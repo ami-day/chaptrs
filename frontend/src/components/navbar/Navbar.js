@@ -13,19 +13,19 @@ const Navbar = ({currentPage}) => {
       <div className="navbar-container container-fluid">
         <img className="logo" alt="Logo" src={logo} />
         <div className="column" />
-        <div className="div">
+        <div className="d-flex flex-row" style={{padding: '10px'}}>
           {currentPage === "homepage" && (
             <>
-              <Link className="text-wrapper nav-link active fw-bold"  to="/">Home</Link>
-              <div className="text-wrapper-2 mr-3" >Dashboard</div>
-              <div className="text-wrapper-2 mr-3">Community</div>
+              <Link className="text-wrapper nav-link active fw-bold" style={{padding: '0 5px'}} to="/">Home</Link>
+              <div className="text-wrapper-2 mr-3" style={{padding: '0 5px'}} >Dashboard</div>
+              <div className="text-wrapper-2 mr-3" style={{padding: '0 5px'}}>Community</div>
             </>
           )}
           
           {currentPage === 'signup' || currentPage === 'login' ? (
             <>
-            <Link className="text-wrapper-2 mr-3" to="/login">Login</Link>
-            <Link className="text-wrapper-2 mr-3" to="/signup">Signup</Link>
+            <Link className="text-wrapper-2 mr-3 nav-link" style={{padding: '0 5px'}} to="/login">Login</Link>
+            <Link className="text-wrapper-2 mr-3 nav-link" style={{padding: '0 5px'}} to="/signup">Signup</Link>
             </>
           ) : (
             <Link className="text-wrapper-2 mr-3 nav-link" onClick={logout} to="/login">Logout</Link>
