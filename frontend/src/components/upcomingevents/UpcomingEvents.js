@@ -107,8 +107,9 @@ const UpcomingEvents = () => {
     </div>
   </div>
   {upcomingSessions ? (
-    <div className="upcoming-event-block">
+    <div id="scrollable">
       {upcomingSessions.map((session) => (
+        <div className="upcoming-event-block">
         <div className="book-wrapper">
           <CoverLabel session={session}></CoverLabel>
           <div className="box">
@@ -120,6 +121,7 @@ const UpcomingEvents = () => {
           <button onClick={() => handleAttendSession(session)}>
             {isUserAttending(session) ? "Unattend" : "Attend"}
           </button>
+        </div>
         </div>
       ))}
     </div>

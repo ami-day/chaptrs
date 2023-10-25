@@ -21,6 +21,11 @@
     position: relative;
     width: 1024px;
   }
+
+  #scrollable {
+    overflow: scroll;
+    height: 760px;
+  }
   
   .upcoming-events .content {
     align-items: flex-start;
