@@ -64,7 +64,7 @@ const UpcomingEvents = () => {
       user_id: user._id,
     };
 
-    // Send a request to your server to handle session attendance
+    // Send a request to server to handle session attendance
     fetch(`/sessions/${session._id}/attend`, {
       method: "POST",
       headers: {
@@ -79,8 +79,8 @@ const UpcomingEvents = () => {
           // Update the local state to reflect the change in attending status
           const updatedSessions = upcomingSessions.map((s) => {
             if (s._id === session._id) {
-              if (!s.attending) {
-                s.attending = 0; // Initialize the count if it doesn't exist
+              if (!s.attending) { 
+                s.attending = 0; 
               }
   
               // Check if the user is already attending
@@ -88,11 +88,11 @@ const UpcomingEvents = () => {
                 s.users_attending = s.users_attending.filter(
                   (userId) => userId !== user._id
                 );
-                s.attending -= 1; // Decrement
+                s.attending -= 1; 
                 setMembersAttending(s.attending);
               } else {
                 s.users_attending.push(user._id);
-                s.attending += 1; // Increment
+                s.attending += 1; 
                 setMembersAttending(s.attending);
               }
             }
@@ -106,7 +106,6 @@ const UpcomingEvents = () => {
   
           setUpcomingSessions(updatedSessions);
         } else {
-          // Handle errors if necessary
           console.error("Failed to update attendance status");
         }
       });

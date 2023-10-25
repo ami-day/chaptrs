@@ -62,10 +62,6 @@ const SessionsController = {
             }
             console.log("Session found:", session);
 
-            session.attending += 1;
-    
-            console.log("Updated attending count:", session.attending);
-
             await session.save();
             res.status(200).json({ session: session });
         } catch (err) {
