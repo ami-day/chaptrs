@@ -7,9 +7,9 @@ const SessionLabel = ({ session, membersAttending }) => {
       <div className="upcoming-session-information">
         {session ? (
           <div>
-            <h3>Date: {session.date}</h3>
-            <h3>Location: {session.location}</h3>
-            <div className="members-attending">
+            <h3 className="sessions-font">Date: {session.date}</h3>
+            <h3 className="sessions-font">Location: {session.location}</h3>
+            <div className="members-attending sessions-font">
               Members Attending: {membersAttending}
             </div>
           </div>
