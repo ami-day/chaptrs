@@ -44,7 +44,7 @@ const LoginForm = ({ navigate }) => {
             <form className="login_form" onSubmit={handleSubmit} >
                 <input type="text" placeholder="Email" value={ email } onChange={handleEmailChange} >
                 </input>
-                <input type="text" placeholder="Password" value={ password } onChange={handlePasswordChange} >
+                <input type="password" placeholder="Password" value={ password } onChange={handlePasswordChange} >
                 </input>
                 <button type="submit">Login</button>
                 {errorMessage && <div className="login-error-message">{errorMessage}</div>}
