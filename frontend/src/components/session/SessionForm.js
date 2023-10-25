@@ -129,7 +129,7 @@ const SessionForm = ({ setModal }) => {
             });
         } else {
             console.log("No token");
-            setAlert(true);
+            setAlert(false);
         }
         
 
