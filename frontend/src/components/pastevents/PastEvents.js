@@ -16,7 +16,7 @@ const book = require('../upcomingevents/book.jpg');
       let past = [];
       let today = new Date();
       sessions.forEach((session) => {
-        if (new Date(session.date) >= today) {
+        if (new Date(session.date) < today) {
           past.push(session);
         }
       });
