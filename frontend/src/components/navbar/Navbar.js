@@ -28,7 +28,7 @@ const Navbar = ({currentPage}) => {
             <Link className="text-wrapper-2 mr-3 nav-link" style={{padding: '0 5px'}} to="/signup">Signup</Link>
             </>
           ) : (
-            <Link className="text-wrapper-2 mr-3 nav-link" onClick={logout} to="/login">Logout</Link>
+            <Link className="text-wrapper-2 mr-3 nav-link" style={{padding: '0 5px'}} onClick={logout} to="/login">Logout</Link>
           )}
         </div>
       </div>

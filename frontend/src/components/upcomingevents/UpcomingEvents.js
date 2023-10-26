@@ -118,7 +118,7 @@ const UpcomingEvents = () => {
           <div className="box">
             <SessionLabel session={session} membersAttending={membersAttending} />
           </div>
-          <button onClick={() => handleAttendSession(session)}>
+          <button className="btn attending-btn custom-shadow-orange" onClick={() => handleAttendSession(session)}>
             {isUserAttending(session) ? "Unattend" : "Attend"}
           </button>
         </div>
