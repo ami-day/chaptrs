@@ -18,7 +18,9 @@ const Header = ({setModal}) => {
         <div className="content">
           <div className="text-wrapper">Chaptrs</div>
           <p className="div">
-            An app to schedule and track your book club sessions.
+          Welcome to Chaptrs, an app for bookworms! Plan and track your bookclubs with fellow book lovers right here.</p>
+          <p className="div">Discover Brontë with buddies, find new friends with Fitzgerald, and review your favourites with Rowling.
+          Read on to explore your very first Chaptr!
           </p>
         </div>
         <div className="actions">
