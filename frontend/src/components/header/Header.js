@@ -18,8 +18,7 @@ const Header = ({setModal}) => {
         <div className="content">
           <div className="text-wrapper">Chaptrs</div>
           <p className="div">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
-            tristique.
+            An app to schedule and track your book club sessions.
           </p>
         </div>
         <div className="actions">
