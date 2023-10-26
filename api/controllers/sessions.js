@@ -46,7 +46,7 @@ const SessionsController = {
 
             session.attending += 1;
 
-            console.log("Updated attending count:", session.attending);
+            // console.log("Updated attending count:", session.attending);
 
             await session.save();
 

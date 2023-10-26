@@ -19,7 +19,8 @@ const SessionForm = ({ setModal }) => {
     const onHandleChangeLocation = (event) => {
         event.preventDefault();
         setLocation(event.target.value)
-        console.log("location:", location)    }
+        // console.log("location:", location)    
+    }
 
     const onHandleChangeChosenBook = (event) => {
         event.preventDefault();
@@ -30,39 +31,39 @@ const SessionForm = ({ setModal }) => {
         const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${chosenBook}`
         let response = await fetch(url);
         response = await response.json()
-        if (response.totalItems == 0) {
+        if (response.totalItems === 0) {
             return {}
         } else {
         const authors_details = response.items[0].volumeInfo.authors;
         const title_details = response.items[0].volumeInfo.title;
         const year_details = response.items[0].volumeInfo.publishedDate;
-       const photo_details = `https://covers.openlibrary.org/b/isbn/${chosenBook}-M.jpg`;
-       const details_object = {
+        const photo_details = `https://covers.openlibrary.org/b/isbn/${chosenBook}-M.jpg`;
+        const details_object = {
         authors_details: authors_details,
         title_details: title_details,
         year_details: year_details,
         photo_details: photo_details
         
-       }
-       return details_object}
+        }
+        return details_object}
     } 
 
     const onClickButtonClose = () => {
-        console.log("Close button clicked");
+        // console.log("Close button clicked");
         setModal(false);
     }
 
     const handleSubmitSession = async (event) => {
         event.preventDefault(); 
-        console.log("date:", date)
-        console.log("location:", location)
-        console.log("chosenBook:", chosenBook)
+        // console.log("date:", date)
+        // console.log("location:", location)
+        // console.log("chosenBook:", chosenBook)
         
         const bookDetails = await fetchBookDetails();
-        console.log(bookDetails.title_details);
-        console.log(bookDetails.authors_details);
-        console.log(bookDetails.year_details);
-        console.log(bookDetails.photo_details);
+        // console.log(bookDetails.title_details);
+        // console.log(bookDetails.authors_details);
+        // console.log(bookDetails.year_details);
+        // console.log(bookDetails.photo_details);
 
         if (token) {
             fetch("/books", {
@@ -80,17 +81,17 @@ const SessionForm = ({ setModal }) => {
             })
             .then((response) => {
                 if (response.status === 201) {
-                    console.log("Book successfully added"); 
+                    // console.log("Book successfully added"); 
                     return response.json();      
                 } else {
-                    console.log("Book not successfully added");
+                    // console.log("Book not successfully added");
                     setButtonClicked(true);
                     setAlert(false);
-                    console.log(buttonClicked);
+                    // console.log(buttonClicked);
                 }
             })
             .then((data) =>{
-                console.log(data);
+                // console.log(data);
                 // setBookObject(data.book);
                 // console.log(bookObject);
                 // update sessions array with new post
@@ -108,28 +109,28 @@ const SessionForm = ({ setModal }) => {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json",
-                    },
+                        },
                     body: JSON.stringify({
                         date: date,
                         location: location,
                         chosen_book: data.book._id
                     
         
-                      }),  
+                        }),  
                     })
                     .then((response) => {
                         if (response.status === 201) {
-                            console.log("Session successfully added"); 
+                            // console.log("Session successfully added"); 
                             return response.json();      
                         } else {
-                            console.log("Session not successfully added");
+                            // console.log("Session not successfully added");
                             setButtonClicked(true);
                             setAlert(false);
-                            console.log(buttonClicked);
+                            // console.log(buttonClicked);
                         }
                     })
                     .then((data) =>{
-                        console.log(data);
+                        // console.log(data);
                         setButtonClicked(true);
                         setAlert(true);
 
@@ -138,10 +139,10 @@ const SessionForm = ({ setModal }) => {
                 
             });
         } else {
-            console.log("No token");
+            // console.log("No token");
             setButtonClicked(true);
             setAlert(false);
-            console.log(buttonClicked);
+            // console.log(buttonClicked);
         }
         
 

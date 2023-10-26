@@ -25,7 +25,7 @@ const UsersController = {
       const users = await User.find();
       // Assuming req.user_id contains the user's ID
       const token = TokenGenerator.jsonwebtoken(req.user_id);
-      console.log("Generated Token:", token);
+      // console.log("Generated Token:", token);
       res.status(200).json({ users: users, token: token });
     } catch (err) {
       res.status(500).json({ message: 'Internal Server Error' });

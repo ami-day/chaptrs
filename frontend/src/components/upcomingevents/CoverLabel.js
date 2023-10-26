@@ -6,7 +6,7 @@ const CoverLabel = ({ session }) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    console.log("Checking books");
+    // console.log("Checking books");
     if (token) {
       fetch("/books", {
         method: "get",

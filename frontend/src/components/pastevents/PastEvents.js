@@ -24,7 +24,6 @@ const book = require('../upcomingevents/book.jpg');
     }
   
     useEffect(() => {
-      console.log("Checking sessions");
       if (token) {
         fetch("/sessions", {
           method: "get",
@@ -34,7 +33,7 @@ const book = require('../upcomingevents/book.jpg');
         })
           .then((response) => response.json())
           .then(async (data) => {
-            console.log("session data", data.sessions);
+            // console.log("session data", data.sessions);
             window.localStorage.getItem("token", data.token);
             let pastSessions = getPastSessions(data.sessions);
             setPastSessions(pastSessions);

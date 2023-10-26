@@ -7,7 +7,6 @@ const picture = require('./homepage-pic.jpg');
 const Header = ({setModal}) => {
   
   const onClickHandler = () => {
-    console.log("Button clicked");
     //event.preventDefault();
     setModal(true);
   }

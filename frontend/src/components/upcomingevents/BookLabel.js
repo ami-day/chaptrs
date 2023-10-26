@@ -7,7 +7,7 @@ const BookLabel = ({ session }) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    console.log("Checking books");
+    // console.log("Checking books");
     if (token) {
       fetch("/books", {
         method: "get",
@@ -17,7 +17,7 @@ const BookLabel = ({ session }) => {
       })
         .then((response) => response.json())
         .then(async (data) => {
-          console.log("Hello data", data);
+          // console.log("Hello data", data);
           window.localStorage.getItem("token", data.token);
           setBooks(data.books);
         });

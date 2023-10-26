@@ -32,7 +32,6 @@ const UpcomingEvents = () => {
   }
 
   useEffect(() => {
-    console.log("Checking sessions");
     if (token) {
       fetch("/sessions", {
         method: "get",
@@ -42,7 +41,6 @@ const UpcomingEvents = () => {
       })
         .then((response) => response.json())
         .then(async (data) => {
-          console.log("session data", data.sessions);
           window.localStorage.getItem("token", data.token);
           let upcomingSessions = getUpcomingSessions(data.sessions);
           setUpcomingSessions(upcomingSessions);
@@ -91,7 +89,7 @@ const UpcomingEvents = () => {
   
           setUpcomingSessions(updatedSessions);
           setMembersAttending(response.attending); // Update members attending count
-          console.log("membersAttending:", membersAttending);
+          // console.log("membersAttending:", membersAttending);
         } else {
           // Handle errors if necessary
           console.error("Failed to update attendance status");
