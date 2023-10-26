@@ -100,32 +100,32 @@ const UpcomingEvents = () => {
   };
 
   return (
-    <div className="upcoming-events">
-      <div className="section-title">
-        <div className="content">
-          <div className="text-wrapper">Upcoming Events</div>
+<div className="upcoming-events">
+  <div className="section-title">
+    <div className="content">
+      <div className="text-wrapper">Upcoming Events</div>
+    </div>
+  </div>
+  {upcomingSessions ? (
+    <div id="scrollable">
+      {upcomingSessions.map((session) => (
+        <div className="upcoming-event-block">
+        <div className="book-wrapper">
+          <CoverLabel session={session}></CoverLabel>
+          <div className="box">
+            <BookLabel session={session}></BookLabel>
+          </div>
+          <div className="box">
+            <SessionLabel session={session} membersAttending={membersAttending} />
+          </div>
+          <button className="btn attending-btn custom-shadow-orange" onClick={() => handleAttendSession(session)}>
+            {isUserAttending(session) ? "Unattend" : "Attend"}
+          </button>
         </div>
       </div>
-      {upcomingSessions ? (
-        <div id="scrollable">
-          {upcomingSessions.map((session) => (
-            <div className="upcoming-event-block">
-            <div className="book-wrapper">
-              <CoverLabel session={session}></CoverLabel>
-              <div className="box">
-                <BookLabel session={session}></BookLabel>
-              </div>
-              <div className="box">
-                <SessionLabel session={session} membersAttending={membersAttending} />
-              </div>
-              <button onClick={() => handleAttendSession(session)}>
-                {isUserAttending(session) ? "Unattend" : "Attend"}
-              </button>
-            </div>
-            </div>
-          ))}
-        </div>
-      ) : (
+      ))}
+    </div>
+  ) : (
         <div className="upcoming-event-block"></div>
       )}
     </div>

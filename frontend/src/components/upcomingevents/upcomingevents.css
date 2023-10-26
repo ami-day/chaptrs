@@ -61,7 +61,7 @@
   }
   
   .upcoming-events .book-wrapper {
-    align-items: flex-start;
+    align-items: flex-end;
     background-color: #a2c3a470;
     border-bottom-style: solid;
     border-bottom-width: 4px;
@@ -96,3 +96,15 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     border-radius: 20px;
   }
+
+  .attending-btn {
+    background-color: #282938 !important;
+    cursor: pointer;
+    color: white !important;
+    font-family: sans-serif;
+  }
+
+  .custom-shadow-orange:hover {
+    background-color: #F27807 !important;
+}
+
