@@ -123,26 +123,9 @@ const UpcomingEvents = () => {
           </button>
         </div>
       </div>
-      {upcomingSessions ? (
-        <div id="scrollable">
-          {upcomingSessions.map((session) => (
-            <div className="upcoming-event-block">
-            <div className="book-wrapper">
-              <CoverLabel session={session}></CoverLabel>
-              <div className="box">
-                <BookLabel session={session}></BookLabel>
-              </div>
-              <div className="box">
-                <SessionLabel session={session} membersAttending={membersAttending} />
-              </div>
-              <button onClick={() => handleAttendSession(session)}>
-                {isUserAttending(session) ? "Unattend" : "Attend"}
-              </button>
-            </div>
-            </div>
-          ))}
-        </div>
-      ) : (
+      ))}
+    </div>
+  ) : (
         <div className="upcoming-event-block"></div>
       )}
     </div>
